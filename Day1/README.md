@@ -426,3 +426,28 @@ cp ~/.ssh/id_ed25519.pub ~/.ssh/authorized_keys
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
 ```
+
+Let's configure the SSH Server to allow key based login authentication
+```
+sudo su -
+vim /etc/ssh/sshd_config
+```
+
+We need to search for the below line and update as shown below
+<pre>
+PublicKeyAuthentication yes
+AuthorizedKeyFile .ssh/authorized_keys
+PasswordAuthentication yes
+</pre>
+
+To apply config changes, we need to restart the SSH Server
+```
+sudo systemctl daemon-reload
+sudo systemctl restart sshd
+sudo systemctl status sshd
+```
+
+Let's check if SSH login for palmeto user is working using key ( i.e without password )
+```
+ssh palmeto@192.168.8.36
+```
