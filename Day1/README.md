@@ -276,3 +276,5 @@ vim mobiles.txt
 Set line number. ( you need to press esc button and Shift :set number )
 
 In order to type anything using vim editor on the file mobiles.txt, you need to press esc i
+
+Saving the changes in the file mobiles.txt ( Press Esc Shift :w )
