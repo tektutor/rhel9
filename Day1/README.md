@@ -323,3 +323,14 @@ Overwriting the file
 echo "Motorola" > mobiles.txt
 cat mobiles.txt
 ```
+
+Expected output
+<pre>
+[jegan@palmeto.org vim-demo]$ cat mobiles.txt 
+Nothing 3Pro
+Iphone 16
+Motorola
+[jegan@palmeto.org vim-demo]$ echo "Motorola" > mobiles.txt 
+[jegan@palmeto.org vim-demo]$ cat mobiles.txt 
+Motorola  
+</pre>
