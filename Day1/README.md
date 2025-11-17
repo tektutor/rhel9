@@ -251,3 +251,12 @@ You can learn more about how to register your system
 using rhc at https://red.ht/registration
 Last login: Mon Nov 17 12:37:16 2025 from 192.168.8.36  
 </pre>
+
+## Lab - Creating a folder under your home directory
+```
+cd ~
+pwd
+mkdir vim-demo
+cd vim-demo
+ls -l
+```
