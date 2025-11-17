@@ -379,8 +379,17 @@ This is Fifth line
 - Esc /word-your-searching/word-you-wish-to-replace-with Enter key  
 </pre>
 
-## Lab - SSH Overview
+## Info - SSH Overview
 <pre>
 - Navigate to your home directory .ssh folder
 - command is cd /home/palmeto/.ssh
 </pre>
+
+## Lab - Public/Private key based login access
+
+Let's login to the lab machine as palmeto user and generate key pair
+```
+ssh-keygen -t ed25519 -N ""
+```
+
+The 
