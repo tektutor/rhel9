@@ -508,3 +508,30 @@ However, the nitesh user is not allowed to
 ```
 sudo su -
 ```
+
+## Lab - Delete an user including the user's home directory recursively
+```
+sudo userdel -r nitesh
+```
+
+## Lab - Let's create a user group
+```
+sudo groupadd devops
+```
+
+List all groups
+```
+getent group
+cat /etc/group
+```
+
+Now, let's create an user and add the user to devops group
+```
+sudo useradd -m -G devops nitesh
+sudo passwd nitesh
+
+# To check in which usergroups a particular user is participating
+```
+id nitesh
+```
+```
