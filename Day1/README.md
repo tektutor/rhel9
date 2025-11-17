@@ -374,4 +374,7 @@ This is Fifth line
 - Press p
 </pre>
 
-
+## Lab - Find and replace in vim
+<pre>
+- Esc /word-your-searching/word-you-wish-to-replace-with Enter key  
+</pre>
