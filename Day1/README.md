@@ -61,3 +61,13 @@ Expected output
 [palmeto@palmeto.org ~]$ cat /etc/redhat-release 
 Red Hat Enterprise Linux release 9.7 (Plow)  
 </pre>
+
+## Lab - Finding linux kernel version
+```
+uname -r
+```
+
+Finding full details
+```
+uname -a
+```
