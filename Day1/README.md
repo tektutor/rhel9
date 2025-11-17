@@ -13,7 +13,6 @@
   - Ubuntu
     - ideal for linux beginners
     - it works well on a machine with normal system configuration
-    - 
   - RHEL ( Red Hat Enterprise Linux )
   - CentOS Stream
   - Rocky Linux
@@ -43,5 +42,9 @@
 
 ## Info - Package Manager Overview
 <pre>
-  
+- every linux distribution comes with one or more package managers
+- package manager helps us
+  - installing software
+  - uninstalling software
+  - upgrading software
 </pre>
