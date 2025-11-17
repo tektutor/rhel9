@@ -272,3 +272,5 @@ ls -l
 cd ~/vim-demo
 vim mobiles.txt
 ```
+
+Set line number. ( you need press esc button Shift :set number )
