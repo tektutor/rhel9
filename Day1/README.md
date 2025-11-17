@@ -263,6 +263,12 @@ ls -l
 
 Let's create an empty zero byte file
 ```
-touch mobile.txt
+touch mobiles.txt
 ls -l
+```
+
+## Lab - Editing a text file using vim text editor
+```
+cd ~/vim-demo
+vim mobiles.txt
 ```
