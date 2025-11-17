@@ -317,3 +317,9 @@ Nothing 3Pro
 Iphone 16
 Motorola  
 </pre>
+
+Overwriting the file
+```
+echo "Motorola" > mobiles.txt
+cat mobiles.txt
+```
