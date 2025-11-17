@@ -503,3 +503,8 @@ sudo systemctl stop sshd
 sudo systemctl start sshd
 sudo systemctl status sshd
 ```
+
+However, the nitesh user is not allowed to
+```
+sudo su -
+```
