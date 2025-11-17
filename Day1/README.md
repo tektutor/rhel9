@@ -157,3 +157,56 @@ d - directory
 rwx - the currently logged in user has read,write and execute permission for that folder
 the second set of rwx - indicates the access the other users in the same user group has for that folder
 the third set of rwx - indicates the access other users in other user group has for that folder
+
+## Lab - Let's create an user
+Replace 'jegan' with your short name. When prompted for password, type 'palmeto' without quotes.
+```
+sudo su -
+useradd -m jegan
+ls -l /home
+```
+
+Let's find the IP address of the lab machine
+```
+ifconfig
+```
+
+Attempt ssh as 'jegan' user ( Replace 'jegan' with your user name )
+```
+ssh jegan@192.168.8.36
+```
+
+Expected output
+<pre>
+[root@palmeto.org ~]# ifconfig
+enp1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.36  netmask 255.255.252.0  broadcast 192.168.11.255
+        inet6 fe80::82e8:2cff:fee3:fecc  prefixlen 64  scopeid 0x20<link>
+        ether 80:e8:2c:e3:fe:cc  txqueuelen 1000  (Ethernet)
+        RX packets 96572  bytes 56322249 (53.7 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 43294  bytes 76077710 (72.5 MiB)
+        TX errors 0  dropped 690 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 531  bytes 52200 (50.9 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 531  bytes 52200 (50.9 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[palmeto@palmeto.org /]$ ssh jegan@192.168.8.36
+The authenticity of host '192.168.8.36 (192.168.8.36)' can't be established.
+ED25519 key fingerprint is SHA256:zjeN8DELqfkl5a3J9RLVwe9SXRYUvEQ0L+EhhM6EajY.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '192.168.8.36' (ED25519) to the list of known hosts.
+jegan@192.168.8.36's password: 
+Permission denied, please try again.
+jegan@192.168.8.36's password: 
+Permission denied, please try again.
+jegan@192.168.8.36's password: 
+jegan@192.168.8.36: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).
+</pre>
