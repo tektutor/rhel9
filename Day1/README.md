@@ -419,3 +419,10 @@ total 16
 -rw-r--r-- 1 palmeto palmeto 101 Nov 17 15:29 id_ed25519.pub
 -rw------- 1 palmeto palmeto 835 Nov 17 15:07 known_hosts  
 </pre>
+
+Let's copy the public key we generated as authorized_keys
+```
+cp ~/.ssh/id_ed25519.pub ~/.ssh/authorized_keys
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+```
