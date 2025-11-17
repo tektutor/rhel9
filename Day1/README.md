@@ -355,3 +355,23 @@ To paste the line(s) copied 10 times
 ```
 Esc 10p
 ```
+
+## Lab - Copying a block of words in different lines ( let's say copy third column from line 2 to line 4 )
+Assume we have a file with below content 
+```
+This is First line
+This is Second line
+This is Third line
+This is Fourth line
+This is Fifth line
+```
+
+<pre>
+- Take the cursor to line number 2 and navigate to letter 'S' in the word Second ( Press Ctrl + V )
+- Keep moving the cursor using up/down arrows select word Fourth in the fourth line
+- To copy press y
+- Move the cursor to wherever you wish to paste
+- Press p
+</pre>
+
+
