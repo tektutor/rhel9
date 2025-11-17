@@ -133,3 +133,27 @@ drwxrwxrwt.  20 root root 4096 Nov 17 12:11 tmp
 drwxr-xr-x.  12 root root  144 Nov 13 12:47 usr
 drwxr-xr-x.  20 root root 4096 Nov 13 13:27 var  
 </pre>
+
+In the above output, the first column indicates the permission each user has on the file/directory.
+
+<pre>
+d - the first letter 'd' indicates directory  
+l - the first letter 'l' indicates link file(shortcut)
+r - read ( 4 )
+w - write ( 2 )
+x - execute ( 1 )
+r - read
+w - write
+x - execute
+r - read
+w - write
+x - execute
+</pre>
+
+Let's understand the permission pattern
+"drwxrwxrwx"
+
+d - directory
+rwx - the currently logged in user has read,write and execute permission for that folder
+the second set of rwx - indicates the access the other users in the same user group has for that folder
+the third set of rwx - indicates the access other users in other user group has for that folder
