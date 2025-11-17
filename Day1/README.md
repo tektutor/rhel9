@@ -284,3 +284,20 @@ In order to type anything using vim editor on the file mobiles.txt, you need to 
 Saving the changes in the file mobiles.txt ( Press Esc Shift :w )
 
 Exiting vim editor ( Press Esc :q )
+
+Expected output
+<pre>
+[jegan@palmeto.org vim-demo]$ touch mobiles.txt
+[jegan@palmeto.org vim-demo]$ ls -l
+total 0
+-rw-r--r-- 1 jegan jegan 0 Nov 17 12:46 mobiles.txt
+[jegan@palmeto.org vim-demo]$ vim mobiles.txt 
+[jegan@palmeto.org vim-demo]$ ls
+mobiles.txt
+[jegan@palmeto.org vim-demo]$ ls -l
+total 4
+-rw-r--r-- 1 jegan jegan 23 Nov 17 12:53 mobiles.txt
+[jegan@palmeto.org vim-demo]$ cat mobiles.txt 
+Nothing 3Pro
+Iphone 16  
+</pre>
