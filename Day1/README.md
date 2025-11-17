@@ -390,6 +390,32 @@ This is Fifth line
 Let's login to the lab machine as palmeto user and generate key pair
 ```
 ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519
+ls -l /home/palmeto/.ssh
 ```
 
-The 
+Expected output
+<pre>
+[palmeto@palmeto.org ~]$ ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519
+Generating public/private ed25519 key pair.
+Your identification has been saved in /home/palmeto/.ssh/id_ed25519
+Your public key has been saved in /home/palmeto/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:tJjCJJk6Qm8r6uFF2nAySzY7oaNQ8xUfHL6UnWNQr20 palmeto@palmeto.org
+The key's randomart image is:
++--[ED25519 256]--+
+|        o..      |
+|   o   o = o     |
+| .+ . . B = .    |
+|...+   B = +     |
+|+Oo=o + S . E    |
+|=o#o.o     .     |
+|+B +.            |
+|=.=              |
+|+o               |
++----[SHA256]-----+
+[palmeto@palmeto.org ~]$ ls -l /home/palmeto/.ssh
+total 16
+-rw------- 1 palmeto palmeto 411 Nov 17 15:29 id_ed25519
+-rw-r--r-- 1 palmeto palmeto 101 Nov 17 15:29 id_ed25519.pub
+-rw------- 1 palmeto palmeto 835 Nov 17 15:07 known_hosts  
+</pre>
