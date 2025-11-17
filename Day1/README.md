@@ -437,7 +437,7 @@ We need to search for the below line and update as shown below
 <pre>
 PubKeyAuthentication yes
 AuthorizedKeyFile .ssh/authorized_keys
-PasswordAuthentication yes
+PasswordAuthentication no
 </pre>
 
 To apply config changes, we need to restart the SSH Server
