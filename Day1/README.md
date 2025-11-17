@@ -382,5 +382,5 @@ This is Fifth line
 ## Lab - SSH Overview
 <pre>
 - Navigate to your home directory .ssh folder
-- command is cd /home/jegan/.ssh
+- command is cd /home/palmeto/.ssh
 </pre>
