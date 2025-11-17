@@ -71,3 +71,29 @@ Finding full details
 ```
 uname -a
 ```
+
+## Lab - Finding present working directory
+Find the currently logged in user
+```
+whoami
+```
+
+Switch to user home directory
+```
+cd ~
+```
+
+Now find out the present working directory
+```
+pwd
+```
+
+Expected output
+<pre>
+[palmeto@palmeto.org ~]$ cd ~
+[palmeto@palmeto.org ~]$ 
+[palmeto@palmeto.org ~]$ pwd
+/home/palmeto
+[palmeto@palmeto.org ~]$ whoami
+palmeto
+</pre>
