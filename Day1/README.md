@@ -50,3 +50,14 @@
 - package managers depends on the repository server to download the software installer packages
 - in case the reposiotry url for a particular software is not available on your system, it is possible it won't be able to install that software
 </pre>
+
+## Lab - Finding the Linux distribution and its version in RHEL
+```
+cat /etc/redhat-release
+```
+
+Expected output
+<pre>
+[palmeto@palmeto.org ~]$ cat /etc/redhat-release 
+Red Hat Enterprise Linux release 9.7 (Plow)  
+</pre>
