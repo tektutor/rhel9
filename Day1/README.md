@@ -451,3 +451,20 @@ Let's check if SSH login for palmeto user is working using key ( i.e without pas
 ```
 ssh palmeto@192.168.8.36
 ```
+<pre>
+[palmeto@palmeto.org ~]$ ssh palmeto@192.168.8.36
+Activate the web console with: systemctl enable --now cockpit.socket
+
+Register this system with Red Hat Insights: rhc connect
+
+Example:
+# rhc connect --activation-key <key> --organization <org>
+
+The rhc client and Red Hat Insights will enable analytics and additional
+management capabilities on your system.
+View your connected systems at https://console.redhat.com/insights
+
+You can learn more about how to register your system 
+using rhc at https://red.ht/registration
+Last login: Mon Nov 17 15:08:11 2025 from 192.168.8.36
+</pre>
