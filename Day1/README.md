@@ -271,6 +271,10 @@ ls -l
 ```
 cd ~/vim-demo
 vim mobiles.txt
+ls -l
+
+# See the content of the file mobiles.txt
+cat mobiles.txt
 ```
 
 Set line number. ( you need to press esc button and Shift :set number )
