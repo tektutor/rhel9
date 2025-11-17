@@ -97,3 +97,9 @@ Expected output
 [palmeto@palmeto.org ~]$ whoami
 palmeto
 </pre>
+
+## Lab - Listing files and folders
+```
+cd /
+ls -l
+```
