@@ -301,3 +301,19 @@ total 4
 Nothing 3Pro
 Iphone 16  
 </pre>
+
+Appending a mobile at the end of the file without overwriting
+```
+ls -l
+echo "Motorola" >> mobiles.txt
+cat mobiles.txt
+```
+
+Expected output
+<pre>
+[jegan@palmeto.org vim-demo]$ echo "Motorola" >> mobiles.txt 
+[jegan@palmeto.org vim-demo]$ cat mobiles.txt 
+Nothing 3Pro
+Iphone 16
+Motorola  
+</pre>
