@@ -334,3 +334,24 @@ Motorola
 [jegan@palmeto.org vim-demo]$ cat mobiles.txt 
 Motorola  
 </pre>
+
+## Lab - Copy/paste in vim
+To copy one line from the current cursor position
+```
+Esc yy
+```
+
+To copy 3 lines from the current cursor position
+```
+Esc 3 yy
+```
+
+To paste
+```
+Esc p
+```
+
+To paste the line(s) copied 10 times
+```
+Esc 10p
+```
