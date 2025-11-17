@@ -535,7 +535,7 @@ sudo passwd nitesh
 id nitesh
 ```
 
-# To delete the group
+# To delete the group, the users that are part of this group will not deleted ( Hence, we need delete users with separte userdel command as they may be part of many other groups )
 ```
 sudo groupdel devops
 ```
