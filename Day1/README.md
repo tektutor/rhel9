@@ -534,4 +534,8 @@ sudo passwd nitesh
 ```
 id nitesh
 ```
+
+# To delete the group
+```
+sudo groupdel devops
 ```
