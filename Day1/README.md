@@ -158,7 +158,7 @@ rwx - the currently logged in user has read,write and execute permission for tha
 the second set of rwx - indicates the access the other users in the same user group has for that folder
 the third set of rwx - indicates the access other users in other user group has for that folder
 
-## Lab - Let's create an user
+## Lab - Let's create an user as an administrator
 Replace 'jegan' with your short name. When prompted for password, type 'palmeto' without quotes.
 ```
 sudo su -
@@ -209,4 +209,45 @@ jegan@192.168.8.36's password:
 Permission denied, please try again.
 jegan@192.168.8.36's password: 
 jegan@192.168.8.36: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).
+</pre>
+
+The reason the login failed is because we haven't configured the password after creating the user. 
+Let's configure the password for user 'jegan' as admin
+```
+sudo su -
+passwd jegan
+```
+
+Expected output
+<pre>
+[root@palmeto.org ~]# passwd jegan
+Changing password for user jegan.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@palmeto.org ~]#   
+</pre>
+
+Now switch the second tab, to login as 'jegan' user
+```
+ssh jegan@192.168.8.36
+```
+
+Expected output
+<pre>
+[palmeto@palmeto.org /]$ ssh jegan@192.168.8.36
+jegan@192.168.8.36's password: 
+Register this system with Red Hat Insights: rhc connect
+
+Example:
+# rhc connect --activation-key <key> --organization <org>
+
+The rhc client and Red Hat Insights will enable analytics and additional
+management capabilities on your system.
+View your connected systems at https://console.redhat.com/insights
+
+You can learn more about how to register your system 
+using rhc at https://red.ht/registration
+Last login: Mon Nov 17 12:37:16 2025 from 192.168.8.36  
 </pre>
