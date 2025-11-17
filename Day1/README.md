@@ -47,4 +47,6 @@
   - installing software
   - uninstalling software
   - upgrading software
+- package managers depends on the repository server to download the software installer packages
+- in case the reposiotry url for a particular software is not available on your system, it is possible it won't be able to install that software
 </pre>
