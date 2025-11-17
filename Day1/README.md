@@ -378,3 +378,9 @@ This is Fifth line
 <pre>
 - Esc /word-your-searching/word-you-wish-to-replace-with Enter key  
 </pre>
+
+## Lab - SSH Overview
+<pre>
+- Navigate to your home directory .ssh folder
+- command is cd /home/jegan/.ssh
+</pre>
