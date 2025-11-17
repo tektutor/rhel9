@@ -435,7 +435,7 @@ vim /etc/ssh/sshd_config
 
 We need to search for the below line and update as shown below
 <pre>
-PublicKeyAuthentication yes
+PubKeyAuthentication yes
 AuthorizedKeyFile .ssh/authorized_keys
 PasswordAuthentication yes
 </pre>
