@@ -468,3 +468,19 @@ You can learn more about how to register your system
 using rhc at https://red.ht/registration
 Last login: Mon Nov 17 15:08:11 2025 from 192.168.8.36
 </pre>
+
+## Lab - Providing root access to the user you created in RHEL
+
+You need to login as administrator in one of the terminal ( may elivate palmeto user to root )
+```
+sudo su -
+useradd -m nitesh
+cat /etc/sudoers
+```
+
+Edit the file and add the below entry in the /etc/sudoers file
+<pre>
+# Allow root to run any commands anywhere 
+root	ALL=(ALL) 	ALL
+nitesh  ALL=(ALL) 	ALL  
+</pre>
