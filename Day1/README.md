@@ -484,3 +484,22 @@ Edit the file and add the below entry in the /etc/sudoers file
 root	ALL=(ALL) 	ALL
 nitesh  ALL=(ALL) 	ALL  
 </pre>
+
+## Lab - Giving root access to an user only to specific commands
+As an admin, edit the /etc/sudoers file and update it as shown below
+```
+## Allow root to run any commands anywhere 
+root	ALL=(ALL) 	ALL
+nitesh  ALL=(ALL)       NOPASSWD: /bin/systemctl restart sshd	
+nitesh  ALL=(ALL)       NOPASSWD: /bin/systemctl start sshd	
+nitesh  ALL=(ALL)       NOPASSWD: /bin/systemctl stop sshd	
+nitesh  ALL=(ALL)       NOPASSWD: /bin/systemctl status sshd
+```
+
+Now, the nitesh user can manage ssh server commands without password
+```
+sudo systemctl restart sshd
+sudo systemctl stop sshd
+sudo systemctl start sshd
+sudo systemctl status sshd
+```
