@@ -260,3 +260,9 @@ mkdir vim-demo
 cd vim-demo
 ls -l
 ```
+
+Let's create an empty zero byte file
+```
+touch mobile.txt
+ls -l
+```
