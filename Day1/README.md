@@ -389,7 +389,7 @@ This is Fifth line
 
 Let's login to the lab machine as palmeto user and generate key pair
 ```
-ssh-keygen -t ed25519 -N ""
+ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519
 ```
 
 The 
