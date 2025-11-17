@@ -539,3 +539,19 @@ id nitesh
 ```
 sudo groupdel devops
 ```
+
+## Info - Linux links
+<pre>
+- they are like shortcuts to files
+- there are 2 types
+  - soft ( aka symbolic - shortcuts) and
+  - hard links ( additional names for a file )
+</pre>
+
+## Lab - Let's create a soft link
+```
+whoami
+cd ~
+ln -s /usr/bin/ls ls
+ls -l
+```
