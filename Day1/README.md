@@ -929,3 +929,13 @@ sudo swapon /swapfile
 sudo swapon --show
 ```
 <img width="1280" height="768" alt="image" src="https://github.com/user-attachments/assets/fabf2610-fe86-4495-90ac-b05dce85e849" />
+
+If you wish to make this swap configuration permanent, we need to configure the /etc/fstab file. you need to append below line
+<pre>
+/swapfile swap swap defaults 0 0  
+</pre>
+
+Apply the changes
+```
+sudo mount -a
+```
