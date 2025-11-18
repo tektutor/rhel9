@@ -901,6 +901,7 @@ ls -l
 
 Once you are done with this exercise, unmoun it
 ```
+cd ~
 sudo umount /mnt/mydisk
 sudo losetup -d /dev/loop0
 ```
