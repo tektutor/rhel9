@@ -663,3 +663,14 @@ ps -ef | grep -i firefox
 ```
 ps --ppid 4139
 ```
+
+## Lab - Check the currently active performance profile applied on your RHEL machine
+```
+tuned-adm active
+```
+
+Change the profile to high performance
+```
+tuned-adm profile throughput-performance
+tuned-adm active
+```
