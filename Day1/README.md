@@ -10,6 +10,17 @@
 
 ## Linux Distribution Overview
 <pre>
+- each Linux distribution bundles their preferred linux kernel version, linux tools, shell and other tools
+- most Linux distibution supports either KDE or Gnone Desktop to support GUI
+- KDE is built using Qt C++ GUI Framework
+- while Gnome is built using GTK C++ GUI Framework
+- Apart from these two popular Desktop environments there are many others, 
+  - Gtk based
+    - XFCE
+    - Cinnamon
+    - MATE
+  - Qt based
+    - LxQt
 - examples
   - Ubuntu
     - ideal for linux beginners
