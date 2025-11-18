@@ -756,3 +756,12 @@ jegan@localhost:~$ atq
 jegan@localhost:~$ cat ~/out.log 
 One time task got triggered
 </pre>
+
+
+## Lab - Installing Podman container engine in RHEL 9
+```
+sudo dnf update -y
+sudo dnf install -y podman
+podman --version
+podman images
+```
