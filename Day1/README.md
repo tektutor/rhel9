@@ -802,8 +802,15 @@ podman images
   - Podman - internally depends on cRun/CRI-O container runtime
 </pre>
 
+## Lab - Download nginx image from Docker Hub
+```
+podman images
+podman pull bitnami/nginx:latest
+podman images
+```
+
 ## Lab - Create a container using Podman
 ```
-podman run -d bitnami/nginx:latest
+podman run -d --name nginx --hostname nginx bitnami/nginx:latest
 podman ps
 ```
