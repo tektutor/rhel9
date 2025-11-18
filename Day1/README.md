@@ -837,3 +837,61 @@ podman ps
 ```
 
 <img width="1280" height="768" alt="image" src="https://github.com/user-attachments/assets/3a5ec038-29bb-4f98-81d6-1868a0f35d39" />
+
+## Info - Mounting Overview
+<pre>
+- attaching a filesystem(device) to a directory (mount point )
+- we can access the files on the device on the the directory we used as mount point
+</pre>
+
+## Lab - Create a empty 1GB disk file
+```
+dd if=/dev/zero of=/tmp/mydisk.img bs=1M count=1024
+```
+
+Create a partition on the disk
+```
+sudo fdisk /tmp/mydisk.img
+```
+
+Map the disk to a loop device
+```
+sudo losetup -fP /tmp/mydisk.img
+```
+
+Create a filesystem
+```
+sudo mkfs.ext4 /dev/loop100
+```
+
+Create a mount point
+```
+sudo mkdir -p /mnt/mydisk
+```
+
+Mount the disk
+```
+sudo mount /dev/loop100 /mnt/mydisk
+```
+
+Verify
+```
+cd /mnt/mydisk
+touch file1.txt file2.txt file3.txt
+
+echo "File 1" > file1.txt
+echo "File 2" > file2.txt
+echo "File 3" > file3.txt
+
+cat file1.txt
+cat file2.txt
+cat file3.txt
+
+ls -l
+```
+
+Once you are done with this exercise, unmoun it
+```
+sudo unmount /mnt/mydisk
+sudo losetup -d /dev/loop100
+```
