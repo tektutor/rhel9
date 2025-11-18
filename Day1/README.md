@@ -982,7 +982,7 @@ sudo mkdir -p /var/nfs/shared2
 sudo mkdir -p /var/nfs/shared3
 
 sudo chmod -R 777 /var/nfs
-sudo chown nouser:nogroup -R /var/nfs
+sudo chown nobody:nobody -R /var/nfs
 ```
 
 We need to configure the /etc/exports file
