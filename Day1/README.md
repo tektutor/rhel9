@@ -600,7 +600,7 @@ ls -l
 umask 022
 ```
 <pre>
-The above command removes no permssion for the owner of the file/folder.
+The above command removes no permissions for the owner of the file/folder.
 The above command removes write permission for the other users in same group
 The above command removes write permission for the other users in other groups
 </pre>
@@ -613,4 +613,11 @@ touch file1.txt
 # Observe the output of ls command to notice write permission is removed for other users in same and other groups
 # while the owner has read and write access
 ls -l
+```
+
+Try the below 
+```
+umask 077
+touch file5.txt
+mkdir dir5.txt
 ```
