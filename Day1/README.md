@@ -4,11 +4,12 @@
 <pre>
 - is an open source project
 - developed and maintained by Linux Torvalds and the open source community
+- every Linux distribution depends on this Linux kernel project
+- different Linux distibutions uses different version of Linux kernel as per their strategy 
 </pre>
 
 ## Linux Distribution Overview
 <pre>
-
 - examples
   - Ubuntu
     - ideal for linux beginners
