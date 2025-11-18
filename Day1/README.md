@@ -1014,4 +1014,5 @@ sudo mkdir -p /mnt/nfs/share1
 sudo mount 192.168.122.72:/var/nfs/shared1 /mnt/nfs/share1
 sudo mount -a
 ls -l /mnt/nfs/share1
+cat /mnt/nfs/share1/file1.txt
 ```
