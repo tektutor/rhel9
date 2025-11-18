@@ -803,6 +803,8 @@ podman images
 </pre>
 
 ## Lab - Download nginx image from Docker Hub
+Select the docker.io ( Docker Hub while downloading the image )
+
 ```
 podman images
 podman pull bitnami/nginx:latest
