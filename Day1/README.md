@@ -703,6 +703,14 @@ taskset -cp 2,3 <pid>
 ```
 
 ## Lab - Running an application/command every minute
+The first command, you need to type in your terminal.  This will open vim editor, type the ** command within vim and save it.
+<pre>
+crontab -e
+* * * * * echo "Timer triggered" >> ~/out.log
+</pre>
+
+You can check the output of the echo getting appended every one minute in the out.log at your home directory.
 ```
-* * * * * echo "Timer triggered" 2>&1 out.log
+cat ~/out.log
 ```
+
