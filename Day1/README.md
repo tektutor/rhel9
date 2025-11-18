@@ -717,3 +717,12 @@ You can check the output of the echo getting appended every one minute in the ou
 cat ~/out.log
 ```
 
+Once you have completed this exercise, make sure the cronjob is removed
+```
+# Delete the line you added error when the below command open the vim and save it
+crontab -e
+```
+## Lab - Schedule an one time job
+```
+echo "One time job got executed" | at 14:05
+```
