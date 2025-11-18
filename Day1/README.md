@@ -817,3 +817,23 @@ podman run -d --name nginx --hostname nginx bitnami/nginx:latest
 podman ps
 ```
 <img width="1280" height="768" alt="image" src="https://github.com/user-attachments/assets/d94b438e-254f-47a0-b60d-d98d36cf9698" />
+
+
+## Lab - Creating multiple nginx web server containers
+```
+podman run -d --name nginx2 --hostname nginx2 bitnami/nginx:latest
+podman run -d --name nginx3 --hostname nginx3 bitnami/nginx:latest
+```
+
+Let's list all running containers
+```
+podman ps
+```
+
+Let's rename the nginx container to nginx1
+```
+podman rename nginx nginx1
+podman ps
+```
+
+<img width="1280" height="768" alt="image" src="https://github.com/user-attachments/assets/3a5ec038-29bb-4f98-81d6-1868a0f35d39" />
