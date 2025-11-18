@@ -966,3 +966,49 @@ sudo mkdir -p /mnt/mydisk2
 sudo mount /dev/sda4 /mnt/mydisk2
 mount | grep sda4
 ```
+
+## Lab - Install NFS Server in RHEL 9
+```
+sudo dnf install nfs-utils -y
+sudo systemctl enable --now nfs-server
+sudo systemctl start nfs-server
+sudo systemctl status nfs-server 
+```
+
+Create NFS Shared directories
+```
+sudo mkdir -p /var/nfs/shared1
+sudo mkdir -p /var/nfs/shared2
+sudo mkdir -p /var/nfs/shared3
+
+sudo chmod -R 777 /var/nfs
+sudo chown nouser:nogroup -R /var/nfs
+```
+
+We need to configure the /etc/exports file
+<pre>
+/var/nfs/shared1 *(rw,sync,no_root_squash,no_subtree_check)  
+/var/nfs/shared2 *(rw,sync,no_root_squash,no_subtree_check)  
+/var/nfs/shared3 *(rw,sync,no_root_squash,no_subtree_check)  
+</pre>
+
+Apply changes
+```
+sudo exportfs -a
+sudo exportfs -v
+```
+
+Configure firewall
+```
+sudo firewall-cmd --permanent --add-service=nfs
+sudo firewall-cmd --permanent --add-service=mountd
+sudo firewall-cmd --permanent --add-service=rpc-bind
+sudo firewall-cmd --reload
+```
+
+Let's create a mount point
+```
+sudo mkdir -p /mnt/nfs/share1
+sudo mount 192.168.122.72:/var/nfs/share1 /mnt/nfs/share1
+sudo mount -a
+```
