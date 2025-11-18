@@ -30,6 +30,16 @@
     systemctl status sshd
 </pre>
 
+## Lab - Starting vm1 and vm2 in your cloud lab machine
+KVM virtualization server commands
+```
+sudo virsh list --all
+sudo virsh start vm1
+sudo virsh start vm1
+sudo virsh console vm1
+```
+When vm1 prompts for user, type root as user and root as password.
+
 ## Lab - list all auto-started systemd services
 
 ```
