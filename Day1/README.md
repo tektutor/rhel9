@@ -814,3 +814,4 @@ podman images
 podman run -d --name nginx --hostname nginx bitnami/nginx:latest
 podman ps
 ```
+<img width="1280" height="768" alt="image" src="https://github.com/user-attachments/assets/d94b438e-254f-47a0-b60d-d98d36cf9698" />
