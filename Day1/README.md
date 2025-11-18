@@ -561,7 +561,7 @@ sudo groupdel devops
 </pre>
 
 ## Lab - Let's create a soft link
-```
+
 whoami
 cd ~
 ln -s /usr/bin/ls ls
@@ -569,7 +569,7 @@ ls -l
 ```
 
 ## Lab - Changing permission of a file/folder
-```
+<pre>
 cd ~
 touch file1.txt
 ls -l
@@ -589,4 +589,4 @@ ls -l
 #Let's give execute permission for everyone
 chmod +x file1.txt
 ls -l
-```
+</pre>
