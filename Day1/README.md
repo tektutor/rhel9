@@ -724,5 +724,33 @@ crontab -e
 ```
 ## Lab - Schedule an one time job
 ```
-echo "One time job got executed" | at 14:05
+at 14:10
+at> echo "One time job got triggered" > ~/out.log
+at> Ctrl + D
 ```
+
+List all the scheduled jobs
+```
+atq
+```
+
+When the timer expires, check the log
+```
+cat ~/out.log
+```
+
+Expected output
+<pre>
+jegan@localhost:~$ at 14:06
+warning: commands will be executed using /bin/sh
+at Tue Nov 18 14:06:00 2025
+at> echo "One time task got triggered" > ~/out.log
+at> <EOT>
+job 1 at Tue Nov 18 14:06:00 2025
+
+jegan@localhost:~$ atq
+1	Tue Nov 18 14:06:00 2025 a jegan
+
+jegan@localhost:~$ cat ~/out.log 
+One time task got triggered
+</pre>
