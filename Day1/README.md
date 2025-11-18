@@ -684,11 +684,13 @@ tuned-adm active
 ## Lab - Starting a application with highest cpu priority ( Default - 0, -20 is hightest and 19 lowest priority )
 
 Assumption is the application is not running already, so you wish start the applicaiton with highest priority
+
 ```
 nice -n -20 calculator
 ```
 
 ## Lab - Changing the priority of an already running application
+
 ```
 renice -5 -p 5342
 ```
