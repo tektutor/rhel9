@@ -654,4 +654,12 @@ Find top 10 applications whose CPU utilization is on the higher side
 ps aux --sort=-%cpu | head
 ps aux --sort=-%cpu | head -n 10
 ```
+## Lab - Find all the child processes of a given parent process id 
+```
+# Launch firefox
+ps -ef | grep -i firefox
 
+# List all child processes 
+```
+ps --ppid 4139
+```
