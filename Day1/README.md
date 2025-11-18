@@ -853,15 +853,22 @@ Create a partition on the disk
 ```
 sudo fdisk /tmp/mydisk.img
 ```
+<pre>
+- command above will prompt for your option at the time type n
+- select extended partition
+- press m
+- type w to save the partition table and quit
+</pre>
 
 Map the disk to a loop device
 ```
 sudo losetup -fP /tmp/mydisk.img
+sudo losetup -a
 ```
 
 Create a filesystem
 ```
-sudo mkfs.ext4 /dev/loop100
+sudo mkfs.ext4 /dev/loop0
 ```
 
 Create a mount point
@@ -871,7 +878,7 @@ sudo mkdir -p /mnt/mydisk
 
 Mount the disk
 ```
-sudo mount /dev/loop100 /mnt/mydisk
+sudo mount /dev/loop0 /mnt/mydisk
 ```
 
 Verify
@@ -893,5 +900,5 @@ ls -l
 Once you are done with this exercise, unmoun it
 ```
 sudo unmount /mnt/mydisk
-sudo losetup -d /dev/loop100
+sudo losetup -d /dev/loop0
 ```
