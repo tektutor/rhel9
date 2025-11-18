@@ -939,3 +939,30 @@ Apply the changes
 ```
 sudo mount -a
 ```
+
+
+## Lab - Manage Basic storage
+
+
+View disk size
+```
+lsblk -f
+sudo fdisk -l
+```
+
+Create partitions
+```
+sudo fdisk /dev/sda
+```
+
+Create file system
+```
+sudo mkfs.ext4 /dev/sda4
+```
+
+Create a mount point
+```
+sudo mkdir -p /mnt/mydisk2
+sudo mount /dev/sda4 /mnt/mydisk2
+mount | grep sda4
+```
