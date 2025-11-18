@@ -701,3 +701,8 @@ Changing the cpu affinity of an already running application
 ```
 taskset -cp 2,3 <pid>
 ```
+
+## Lab - Running an application/command every minute
+```
+* * * * * echo "Timer triggered" 2>&1 out.log
+```
