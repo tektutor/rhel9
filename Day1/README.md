@@ -694,6 +694,7 @@ renice -5 -p 5342
 ```
 
 ## Lab - Set the cpu affinity ( controlling your application runs on which cpu cores )
+
 ```
 taskset -c 0 ls
 ```
