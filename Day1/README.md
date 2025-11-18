@@ -674,3 +674,9 @@ Change the profile to high performance
 tuned-adm profile throughput-performance
 tuned-adm active
 ```
+
+Put your machine in powersave mode
+```
+tuned-adm profile powersave
+tuned-adm active
+```
