@@ -621,3 +621,14 @@ umask 077
 touch file5.txt
 mkdir dir5.txt
 ```
+
+## Lab - Listing and killing process in Linux
+```
+ps
+ps aux
+ps -ef
+
+# Launch firefox manually in RHEL machine
+ps -ef |grep -i firefox
+kill -9 3461 
+```
