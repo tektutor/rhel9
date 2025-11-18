@@ -95,4 +95,5 @@ sudo systemctl start sshd
 sudo systemctl status sshd
 sudo systemctl stop sshd
 sudo systemctl restart sshd
+sudo systemctl disable sshd
 ```
