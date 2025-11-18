@@ -48,7 +48,14 @@ systemctl --type=service --state=running
 
 Check the systemd targets 
 ```
-systemctl list-dependencis multi-user.target
+systemctl list-dependencies multi-user.target
+systemctl list-dependencies basic.target
+systemctl list-dependencies graphical.target
+systemctl list-dependencies rescue.target
+systemctl list-dependencies emergency.target
+systemctl list-dependencies shutdown.target
+systemctl list-dependencies reboot.target
+
 ```
 
 List all processes started by systemd
