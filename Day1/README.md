@@ -923,7 +923,7 @@ swapon --show
 Create a swap file
 ```
 sudo dd if=/dev/zero of=/swapfile bs=1M count=1024
-sidp chmod 600 /swapfile
+sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo swapon --show
