@@ -569,6 +569,7 @@ ls -l
 ```
 
 ## Lab - Changing permission of a file/folder
+
 <pre>
 cd ~
 touch file1.txt
@@ -596,6 +597,7 @@ ls -l
 </pre>
 
 ## Lab - Configuring default file and folder permissions on the user level
+
 ```
 umask 022
 ```
