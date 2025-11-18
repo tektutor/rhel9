@@ -905,3 +905,26 @@ cd ~
 sudo umount /mnt/mydisk
 sudo losetup -d /dev/loop0
 ```
+
+## Info - Swap Overview
+<pre>
+- is virtual memory
+- is a disk space used as virtual memory
+- let's say you have an application that requires 2GB RAM but your system only has 1 GB RAM
+- in this case, without virtual memory your system won't be able to run that applicaiton
+- in case you have configured your system to use 1 GB from your Hard disk to be used as virtual memory, your system will use the disk as additional ram to swap out unwanted pages from RAM to disk and vice versa
+</pre>
+
+Check the current swap configuration
+```
+swapon --show
+```
+
+Create a swap file
+```
+sudo dd if=/dev/zero of=/swapfile bs=1M count=1024
+sidp chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo swapon --show
+```
