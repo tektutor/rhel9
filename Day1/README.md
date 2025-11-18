@@ -589,4 +589,8 @@ ls -l
 #Let's give execute permission for everyone
 chmod +x file1.txt
 ls -l
+
+#Remove execute permission for everyone
+chmod -x file1.txt
+ls -l
 </pre>
