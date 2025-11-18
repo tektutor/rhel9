@@ -886,6 +886,8 @@ Verify
 cd /mnt/mydisk
 touch file1.txt file2.txt file3.txt
 
+chmod 666 file1.txt file2.txt file3.txt
+
 echo "File 1" > file1.txt
 echo "File 2" > file2.txt
 echo "File 3" > file3.txt
