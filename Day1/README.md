@@ -928,3 +928,4 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo swapon --show
 ```
+<img width="1280" height="768" alt="image" src="https://github.com/user-attachments/assets/fabf2610-fe86-4495-90ac-b05dce85e849" />
