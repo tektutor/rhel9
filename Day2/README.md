@@ -97,3 +97,15 @@ sudo systemctl stop sshd
 sudo systemctl restart sshd
 sudo systemctl disable sshd
 ```
+
+## Info - Repair file system in case your RHEL system is not booting
+```
+# Meant to be used in ext4 file system
+fsck -fy /dev/sda1
+
+# Meant to be used in xfs file system
+xfs_repair /dev/sda1
+
+# Meant to be used in butter file system
+btrfs check --repair /dev/sda1
+```
