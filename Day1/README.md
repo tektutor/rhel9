@@ -632,3 +632,26 @@ ps -ef
 ps -ef |grep -i firefox
 kill -9 3461 
 ```
+
+## Lab - Finding process that utilizes more more cpu/memory
+```
+top
+```
+To quit the top, press 'q'
+
+To find top 5 applications that uses more RAM(memory)
+```
+ps aux --sort=-%mem | head -n 5
+```
+
+Find the 5 applications that consumes least RAM(memory)
+```
+ps aux --sort=-%mem | tail -n 5
+```
+
+Find top 10 applications whose CPU utilization is on the higher side
+```
+ps aux --sort=-%cpu | head
+ps aux --sort=-%cpu | head -n 10
+```
+
