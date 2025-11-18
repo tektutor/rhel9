@@ -759,9 +759,15 @@ One time task got triggered
 
 
 ## Lab - Installing Podman container engine in RHEL 9
+
 ```
 sudo dnf update -y
 sudo dnf install -y podman
 podman --version
 podman images
 ```
+<img width="1280" height="768" alt="image" src="https://github.com/user-attachments/assets/700a90de-f465-43a3-a147-3fc9de9dbc1c" />
+<img width="1280" height="768" alt="image" src="https://github.com/user-attachments/assets/388bcef4-9b04-40c3-b99d-d2b23c9b33a0" />
+<img width="1280" height="768" alt="image" src="https://github.com/user-attachments/assets/2b0bb566-bdd2-40a7-9344-620ca1719096" />
+<img width="1280" height="768" alt="image" src="https://github.com/user-attachments/assets/0587f80f-f2de-45c4-9fef-1bc4736bc95d" />
+
