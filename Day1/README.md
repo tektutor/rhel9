@@ -801,3 +801,9 @@ podman images
   - Docker internally depends on containerd which in turn depends on runC container runtime
   - Podman - internally depends on cRun/CRI-O container runtime
 </pre>
+
+## Lab - Create a container using Podman
+```
+podman run -d bitnami/nginx:latest
+podman ps
+```
