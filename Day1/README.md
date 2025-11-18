@@ -1009,6 +1009,6 @@ sudo firewall-cmd --reload
 Let's create a mount point
 ```
 sudo mkdir -p /mnt/nfs/share1
-sudo mount 192.168.122.72:/var/nfs/share1 /mnt/nfs/share1
+sudo mount 192.168.122.72:/var/nfs/shared1 /mnt/nfs/share1
 sudo mount -a
 ```
