@@ -699,10 +699,11 @@ taskset -c 0 ls
 
 Changing the cpu affinity of an already running application
 ```
-taskset -cp 2,3 <pid>
+taskset -cp 2,3 your-process-id
 ```
 
 ## Lab - Running an application/command every minute
+
 The first command, you need to type in your terminal.  This will open vim editor, type the ** command within vim and save it.
 <pre>
 crontab -e
