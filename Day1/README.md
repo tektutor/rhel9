@@ -980,6 +980,7 @@ Create NFS Shared directories
 sudo mkdir -p /var/nfs/shared1
 sudo mkdir -p /var/nfs/shared2
 sudo mkdir -p /var/nfs/shared3
+echo "Shared File 1" > /var/nfs/shared1/file1.txt
 
 sudo chmod -R 777 /var/nfs
 sudo chown nobody:nobody -R /var/nfs
@@ -1012,4 +1013,5 @@ Let's create a mount point
 sudo mkdir -p /mnt/nfs/share1
 sudo mount 192.168.122.72:/var/nfs/shared1 /mnt/nfs/share1
 sudo mount -a
+ls -l /mnt/nfs/share1
 ```
