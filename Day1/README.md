@@ -724,8 +724,10 @@ cat ~/out.log
 Once you have completed this exercise, make sure the cronjob is removed
 ```
 # Delete the line you added error when the below command open the vim and save it
+```
 crontab -e
 ```
+
 ## Lab - Schedule an one time job
 ```
 at 14:10
