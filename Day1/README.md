@@ -567,3 +567,26 @@ cd ~
 ln -s /usr/bin/ls ls
 ls -l
 ```
+
+## Lab - Changing permission of a file/folder
+```
+cd ~
+touch file1.txt
+ls -l
+
+#Let's give read/write/execute for everyone
+chmod 777 file1.txt
+ls -l
+
+#Let's give read/write permission only to the owner of the file
+chmod 600 file1.txt
+ls -l
+
+#Let's give execute permission only to user
+chmod u+x file1.txt
+ls -l
+
+#Let's give execute permission for everyone
+chmod +x file1.txt
+ls -l
+```
