@@ -774,3 +774,28 @@ podman images
 <img width="1280" height="768" alt="image" src="https://github.com/user-attachments/assets/2b0bb566-bdd2-40a7-9344-620ca1719096" />
 <img width="1280" height="768" alt="image" src="https://github.com/user-attachments/assets/0587f80f-f2de-45c4-9fef-1bc4736bc95d" />
 
+
+## Info - Container Runtime Overview
+<pre>
+- is a low-level software that helps us manage containers and images
+- container image is blueprint of a container
+- container is an instance of a container image
+- with a container image, one can create multiple containers
+- each container image is given an unique name and ID
+- each container is given a unique name and ID
+- container runtime is not user-friendly, hence normally end-users will not use this directly
+- examples
+  - runC
+  - cRun
+  - CRI-O
+</pre>
+
+## Info - Container Engine Overview
+<pre>
+- Container engine is a high-level software that is also user-friendly
+- helps us manage containers and images
+- internally, container engines depends on container runtimes
+- examples
+  - Docker internally depends on containerd which in turn depends on runC container runtime
+  - Podman - internally depends on cRun/CRI-O container runtime
+</pre>
