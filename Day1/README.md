@@ -996,6 +996,7 @@ Apply changes
 ```
 sudo exportfs -a
 sudo exportfs -v
+sudo showmount -e
 ```
 
 Configure firewall
