@@ -55,7 +55,21 @@ systemctl list-dependencies rescue.target
 systemctl list-dependencies emergency.target
 systemctl list-dependencies shutdown.target
 systemctl list-dependencies reboot.target
+```
 
+Check the current default target
+```
+systemctl get-default
+```
+
+Change default boot target ( switches to gui permanently )
+```
+sudo systemctl set-default graphical.target
+```
+
+Switch to command-line
+```
+sudo systemctl set-default multi-user.target
 ```
 
 List all processes started by systemd
