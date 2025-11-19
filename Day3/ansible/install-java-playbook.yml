@@ -1,0 +1,8 @@
+- name: This playbook will install Java Development kit(JDK) and tmux utility on RHEL ansible nodes
+  hosts: all
+  tasks:
+  - name: Install JDK
+   dnf: name=java-17-openjdk-devel state=latest 
+
+  - name: Install tmux utility
+    dnf: name=tmux state=latest
