@@ -124,5 +124,5 @@ vm1 | SUCCESS => {
     },
     "changed": false,
     "ping": "pong"
-}  
+}
 </pre>
