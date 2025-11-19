@@ -105,3 +105,15 @@ ansible -i inventory all -m ping
 Expected output
 
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/d132cb10-b57f-4cad-99e2-d497f424e150" />
+
+
+## Info - What happens internally when ansible runs the ad-hoc ping command
+<pre>
+- ansible creates a tmp folder on ACM and ansible nodes
+- the ping.py modules is copied to the ACM tmp folder and includes all the dependent code in the ping.py on ACM temp folder
+- ansible copy the ping.py from ACM temp to the ansible node (vm1 and vm2) in a tmp folder
+- ansible gives execute permisison to ping.py on vm1 and vm2
+- ansible runs the ping.py on vm1 and vm2
+- captures the output of ping.py execution on vm1 and vm2
+- gives a summary of out on the ACM machine command prompt
+</pre>
