@@ -57,3 +57,71 @@ dnf update -y
 dnf install -y ansible
 ansible --version
 ```
+
+## Lab - Cloning TekTutor's Training Repository
+```
+cd ~
+git clone https://github.com/tektutor/rhel9.git
+cd rhel9
+```
+
+## Lab - Running ansible ad-hoc command to ping and check if ACM can ping vm1 and vm2
+
+Login to your vm1 with credentials i.e username - root and password - root 
+```
+virsh console vm1
+ifconfig
+mkdir /root/.ssh
+#Create a file named authorized_keys under the folder /root/.ssh/authorized_keys
+#and paste the id_ed25519.pub file content kept at folder /home/palmeto/.ssh/id_ed25519.pub
+```
+
+Login to your vm2 with credentials i.e username - root and password - root
+```
+virsh console vm2 
+ifconfig
+mkdir /root/.ssh
+#Create a file named authorized_keys under the folder /root/.ssh/authorized_keys
+#and paste the id_ed25519.pub file content kept at folder /home/palmeto/.ssh/id_ed25519.pub
+```
+
+If the public keys of palmeto user is exported in the authorized_keys file on vm1 and vm2, 
+then the below ssh connections will allow you to login to vm1 and vm2 without password
+```
+ssh root@192.168.122.62
+exit
+
+ssh root@192.168.122.147
+exit
+```
+
+Now you can run the ansible ad-hoc command to check if ansible can communicate with vm1 and vm2 via SSH connection
+```
+cd ~/rhel9/ansible/
+ansible -i inventory all -m ping
+```
+
+Expected output
+<pre>
+[palmeto@palmeto.org ansible]$ cat inventory 
+[all]
+vm1 ansible_user=root ansible_port=22 ansible_host=192.168.122.62 ansible_private_key_file=~/.ssh/id_ed25519.pub
+vm2 ansible_user=root ansible_port=22 ansible_host=192.168.122.147 ansible_private_key_file=~/.ssh/id_ed25519.pub
+[palmeto@palmeto.org ansible]$ 
+[palmeto@palmeto.org ansible]$ 
+[palmeto@palmeto.org ansible]$ ansible -i inventory all -m ping
+vm2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+vm1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}  
+</pre>
