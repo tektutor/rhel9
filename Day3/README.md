@@ -57,3 +57,10 @@ dnf update -y
 dnf install -y ansible
 ansible --version
 ```
+
+## Lab - Cloning TekTutor's Training Repository
+```
+cd ~
+git clone https://github.com/tektutor/rhel9.git
+cd rhel9
+```
