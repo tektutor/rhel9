@@ -63,6 +63,7 @@ ansible --version
 cd ~
 git clone https://github.com/tektutor/rhel9.git
 cd rhel9
+git pull
 ```
 
 ## Lab - Running ansible ad-hoc command to ping and check if ACM can ping vm1 and vm2
@@ -99,29 +100,24 @@ Now you can run the ansible ad-hoc command to check if ansible can communicate w
 ```
 cd ~/rhel9/ansible/
 ansible -i inventory all -m ping
+ansible -i inventory all -m setup
+ansible -i inventory all -m shell -a "uptime"
+ansible -i inventoty all -m shell -a "hostname"
+ansible -i inventory all -m shell -a "hostname -i"
 ```
 
 Expected output
+
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/d132cb10-b57f-4cad-99e2-d497f424e150" />
+
+
+## Info - What happens internally when ansible runs the ad-hoc ping command
 <pre>
-[palmeto@palmeto.org ansible]$ cat inventory 
-[all]
-vm1 ansible_user=root ansible_port=22 ansible_host=192.168.122.62 ansible_private_key_file=~/.ssh/id_ed25519.pub
-vm2 ansible_user=root ansible_port=22 ansible_host=192.168.122.147 ansible_private_key_file=~/.ssh/id_ed25519.pub
-[palmeto@palmeto.org ansible]$ 
-[palmeto@palmeto.org ansible]$ 
-[palmeto@palmeto.org ansible]$ ansible -i inventory all -m ping
-vm2 | SUCCESS => {
-    "ansible_facts": {
-        "discovered_interpreter_python": "/usr/bin/python3"
-    },
-    "changed": false,
-    "ping": "pong"
-}
-vm1 | SUCCESS => {
-    "ansible_facts": {
-        "discovered_interpreter_python": "/usr/bin/python3"
-    },
-    "changed": false,
-    "ping": "pong"
-}  
+- ansible creates a tmp folder on ACM and ansible nodes
+- the ping.py modules is copied to the ACM tmp folder and includes all the dependent code in the ping.py on ACM temp folder
+- ansible copy the ping.py from ACM temp to the ansible node (vm1 and vm2) in a tmp folder
+- ansible gives execute permisison to ping.py on vm1 and vm2
+- ansible runs the ping.py on vm1 and vm2
+- captures the output of ping.py execution on vm1 and vm2
+- gives a summary of out on the ACM machine command prompt
 </pre>
