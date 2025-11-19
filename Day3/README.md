@@ -53,5 +53,6 @@
 ## Lab - Installing Ansible core on your RHEL 9 cloud machine 
 ```
 sudo su -
+dnf update -y
 dnf install -y ansible
 ```
