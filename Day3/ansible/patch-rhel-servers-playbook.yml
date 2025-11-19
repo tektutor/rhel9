@@ -5,8 +5,11 @@
 
   tasks:
   - name: Register redhat subscription to enable software updates and installations
-    shell: subscription-manager register --username="{{username}}" --password="{{password}}"
-    ignore_errors: yes
+    redhat_subscription:
+      state: present
+      username: "{{ username }}"
+      password: "{{ password }}"
+      auto_attach: true
 
   - name: Ensure all required install tools are available
     package: 
