@@ -132,4 +132,5 @@ cat redhat-credentials.yml
 ansible-playbook -i inventory install-java-playbook.yml --ask-vault-pass
 ```
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/308f02a5-a55e-4f62-a19b-f5bf822732fb" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/b4e4f5eb-6672-406a-b501-bc854ecbf50e" />
 
