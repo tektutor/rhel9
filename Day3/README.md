@@ -100,6 +100,10 @@ Now you can run the ansible ad-hoc command to check if ansible can communicate w
 ```
 cd ~/rhel9/ansible/
 ansible -i inventory all -m ping
+ansible -i inventory all -m setup
+ansible -i inventory all -m shell -a "uptime"
+ansible -i inventoty all -m shell -a "hostname"
+ansible -i inventory all -m shell -a "hostname -i"
 ```
 
 Expected output
