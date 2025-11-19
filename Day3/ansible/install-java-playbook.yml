@@ -2,7 +2,7 @@
   hosts: all
   tasks:
   - name: Install JDK
-    dnf: name=java-17-openjdk-devel state=latest 
+    dnf: name=java-17-openjdk-devel state=latest update_cache=yes 
 
   - name: Install tmux utility
-    dnf: name=tmux state=latest
+    dnf: name=tmux state=latest update_cache=yes
