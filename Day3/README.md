@@ -134,3 +134,39 @@ ansible-playbook -i inventory install-java-playbook.yml --ask-vault-pass
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/308f02a5-a55e-4f62-a19b-f5bf822732fb" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/b4e4f5eb-6672-406a-b501-bc854ecbf50e" />
 
+## Info - Patching RHEL machines manually
+<pre>
+- Whenever Red Hat identifies vulnerabilities, they provide security fixes in the form of patches
+- The patches could also provide bug fixes
+- Patches will never provide new features
+- The steps involved in patching RHEL servers are
+  - Need to ensure subscription is registered
+    - subscription-manager status
+    - subscription-manager register --auto-attach
+  - Refresh repositories
+    - dnf clean all
+    - dnf makecache
+  - Check available updates
+    dnf check-update
+  - List all security patches without installing them
+    dnf updateinfo list security
+  - Apply all security patches
+    dnf update --security -y
+  - Apply all updates
+    - dnf update -y
+    - this will update kernel, packages, security fixes and bug fixes
+  - Reboot if kernel or critical packages are updated
+    needs-restarting -r
+    reboot
+  - Verify after patching
+    cat /etc/redhat-release
+    rpm -q --last | head
+    uname -r
+  - We may have to rollback in case of issues
+    dnf downgrade <package-name>
+  - To automate the pach in RHEL
+    dnf -y update --security
+  - Full patch
+    dnf -y update
+    </package-name>
+</pre>
