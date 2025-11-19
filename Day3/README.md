@@ -1,7 +1,7 @@
 # Day 3
 ## Info - Provisioning tools
 <pre>
-- helps in automating OS installtion, provisioning machine locally or on cloud on as VMs
+- helps in automating OS installation, provisioning machine locally or on cloud on as VMs
 - examples
   - AWS Cloudformation
   - Terraform
