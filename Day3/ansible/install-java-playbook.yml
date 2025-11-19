@@ -1,6 +1,13 @@
 - name: This playbook will install Java Development kit(JDK) and tmux utility on RHEL ansible nodes
   hosts: all
+  vars_files:
+  - redhat-credentials.yml
+
   tasks:
+  - name: Register redhat subscription to enable software updates and installations
+    shell: subscription-manager register --username="{{username}}" --password="{{password}}"
+    ignore_errors: yes
+
   - name: Install JDK
     dnf: name=java-17-openjdk-devel state=latest update_cache=yes 
 
