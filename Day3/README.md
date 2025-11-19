@@ -55,4 +55,5 @@
 sudo su -
 dnf update -y
 dnf install -y ansible
+ansible --version
 ```
