@@ -1,3 +1,3 @@
 [all]
-vm1 ansible_user=root ansible_port=22 ansible_host=192.168.122.62 ansible_private_key_file=~/.ssh/id_ed25519.pub
-vm2 ansible_user=root ansible_port=22 ansible_host=192.168.122.147 ansible_private_key_file=~/.ssh/id_ed25519.pub
+vm1 ansible_user=root ansible_port=22 ansible_host=192.168.122.62 ansible_private_key_file=~/.ssh/id_ed25519
+vm2 ansible_user=root ansible_port=22 ansible_host=192.168.122.147 ansible_private_key_file=~/.ssh/id_ed25519
