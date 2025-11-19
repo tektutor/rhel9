@@ -103,26 +103,5 @@ ansible -i inventory all -m ping
 ```
 
 Expected output
-<pre>
-[palmeto@palmeto.org ansible]$ cat inventory 
-[all]
-vm1 ansible_user=root ansible_port=22 ansible_host=192.168.122.62 ansible_private_key_file=~/.ssh/id_ed25519
-vm2 ansible_user=root ansible_port=22 ansible_host=192.168.122.147 ansible_private_key_file=~/.ssh/id_ed25519
-[palmeto@palmeto.org ansible]$ 
-[palmeto@palmeto.org ansible]$ 
-[palmeto@palmeto.org ansible]$ ansible -i inventory all -m ping
-vm2 | SUCCESS => {
-    "ansible_facts": {
-        "discovered_interpreter_python": "/usr/bin/python3"
-    },
-    "changed": false,
-    "ping": "pong"
-}
-vm1 | SUCCESS => {
-    "ansible_facts": {
-        "discovered_interpreter_python": "/usr/bin/python3"
-    },
-    "changed": false,
-    "ping": "pong"
-}
-</pre>
+
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/d132cb10-b57f-4cad-99e2-d497f424e150" />
