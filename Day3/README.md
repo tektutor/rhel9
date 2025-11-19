@@ -160,7 +160,7 @@ ansible-playbook -i inventory install-java-playbook.yml --ask-vault-pass
     reboot
   - Verify after patching
     cat /etc/redhat-release
-    rpm -q --last | head
+    rpm -qa --last | head
     uname -r
   - We may have to rollback in case of issues
     dnf downgrade <package-name>
