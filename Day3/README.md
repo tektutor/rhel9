@@ -170,3 +170,13 @@ ansible-playbook -i inventory install-java-playbook.yml --ask-vault-pass
     dnf -y update
     </package-name>
 </pre>
+
+## Lab - Automating the RHEL Server patching using ansible playbook
+When prompts for password type root as the vault password to decrypt and retrieve the redhat credentials
+```
+cd ~/rhel9
+git pull
+cd Day3/ansible
+ansible-playbook -i inventory patch-rhel-servers-playbook.yml --ask-vault-pass
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/f4ee9e94-264e-43a6-ab4d-0ff41c0cbe81" />
