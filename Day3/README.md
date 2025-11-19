@@ -72,7 +72,8 @@ Login to your vm1 with credentials i.e username - root and password - root
 virsh console vm1
 ifconfig
 mkdir /root/.ssh
-#Create a file named authorized_keys under the folder /root/.ssh/authorized_keys and paste the id_ed25519.pub file kept at folder /home/palmeto/.ssh/id_ed25519.pub
+#Create a file named authorized_keys under the folder /root/.ssh/authorized_keys
+#and paste the id_ed25519.pub file kept at folder /home/palmeto/.ssh/id_ed25519.pub
 ```
 
 Login to your vm2 with credentials i.e username - root and password - root
@@ -80,5 +81,6 @@ Login to your vm2 with credentials i.e username - root and password - root
 virsh console vm2 
 ifconfig
 mkdir /root/.ssh
-#Create a file named authorized_keys under the folder /root/.ssh/authorized_keys and paste the id_ed25519.pub file kept at folder /home/palmeto/.ssh/id_ed25519.pub
+#Create a file named authorized_keys under the folder /root/.ssh/authorized_keys
+#and paste the id_ed25519.pub file kept at folder /home/palmeto/.ssh/id_ed25519.pub
 ```
