@@ -1,0 +1,30 @@
+- name: Patch and reboot if required
+  hosts: all
+  vars_files:
+  - redhat-credentials.yml
+
+  tasks:
+  - name: Register redhat subscription to enable software updates and installations
+    shell: subscription-manager register --username="{{username}}" --password="{{password}}"
+    ignore_errors: yes
+
+  - name: Ensure all required install tools are available
+    package: 
+      name: dnf-utils
+      state: latest 
+
+  - name: Apply all updates
+    dnf:
+      name: "*"
+      state: latest
+
+  - name: Check if reboot is required
+    command: dnf needs-restarting -r
+    register: reboot_required
+    ignore_errors: yes
+
+  - name: Reboot if required
+    reboot:
+      msg: "Rebooting the server to complete the patching"
+      reboot_timeout: 600
+    when: reboot_required.rc == 1
