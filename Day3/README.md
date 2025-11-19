@@ -121,3 +121,13 @@ Expected output
 - captures the output of ping.py execution on vm1 and vm2
 - gives a summary of out on the ACM machine command prompt
 </pre>
+
+## Lab - Installing jdk and tmux using ansible playbook on vm1 and vm2
+```
+cd ~/rhel9
+git pull
+cd Day3/ansible
+ansible-playbook -i inventory install-java-playbook.yml
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/308f02a5-a55e-4f62-a19b-f5bf822732fb" />
+
