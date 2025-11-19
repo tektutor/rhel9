@@ -84,3 +84,19 @@ mkdir /root/.ssh
 #Create a file named authorized_keys under the folder /root/.ssh/authorized_keys
 #and paste the id_ed25519.pub file content kept at folder /home/palmeto/.ssh/id_ed25519.pub
 ```
+
+If the public keys of palmeto user is exported in the authorized_keys file on vm1 and vm2, 
+then the below ssh connections will allow you to login to vm1 and vm2 without password
+```
+ssh root@192.168.122.62
+exit
+
+ssh root@192.168.122.147
+exit
+```
+
+Now you can run the ansible ad-hoc command to check if ansible can communicate with vm1 and vm2 via SSH connection
+```
+cd ~/rhel9/ansible/
+ansible -i inventory all -m ping
+```
