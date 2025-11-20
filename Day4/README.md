@@ -65,3 +65,33 @@ nmcli con up enp1s0
 
 nmcli device show
 ```
+
+## Lab - Deleting KVM vm1 and vm2 and recreating it
+```
+virsh destroy vm1
+virsh destroy vm2
+virsh undefine vm1 --remove-all-storage
+virsh undefine vm2 --remove-all-storage
+```
+
+Create disks for vm1 and vm2 using kvm
+```
+sudo qemu-img create -f qcow2 /var/lib/libvirt/images/rhel1.qcow2 50G
+sudo qemu-img create -f qcow2 /var/lib/libvirt/images/rhel2.qcow2 50G
+```
+
+Let's create the vm1, when it prompts text mode or vnc mode while install select vnc
+```
+sudo virt-install   --name vm1   --ram 8192   --vcpus 2   --cpu host-model   --disk path=/var/lib/libvirt/images/rhel1.qcow2,format=qcow2   --location /var/lib/libvirt/images/rhel-9.0-x86_64-dvd.iso   --os-variant rhel9.0   --graphics none   --extra-args "console=ttyS0,115200n8"
+```
+
+You can then open remina and paste the 192.168.122.110:1 or whatever the installer shows in the terminal to proceed with gui mode of rhel9 installation
+
+Let's create the vm2, when it prompts text mode or vnc mode while install select vnc
+```
+sudo virt-install   --name vm2   --ram 8192   --vcpus 2   --cpu host-model   --disk path=/var/lib/libvirt/images/rhel2.qcow2,format=qcow2   --location /var/lib/libvirt/images/rhel-9.0-x86_64-dvd.iso   --os-variant rhel9.0   --graphics none   --extra-args "console=ttyS0,115200n8"
+```
+
+You can then open remina and paste the 192.168.122.110:1 or whatever the installer shows in the terminal to proceed with gui mode of rhel9 installation
+
+
