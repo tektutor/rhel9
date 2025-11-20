@@ -15,7 +15,7 @@
 - how many IP addresses are there in the above  ( 256 x 256 = 65535 IP addresses in the above subnet )
 </pre>
 
-## Lab - Manually modify the network configure in vm1 ( assign static IP manually )
+## Lab - Manually modify the network configuration in vm1 ( assign static IP manually )
 Ensure you have already logged in to your vm1 using virsh
 ```
 virsh console vm1
