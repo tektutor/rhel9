@@ -45,8 +45,8 @@ nmcli device
 
 Configure static IP by modify the existing network interface
 ```
-nmcli con mod enp1s0 ipv4.addresses "192.168.1.50/24"
-nmcli con mod enp1s0 ipv4.gateway "192.168.1.1"
+nmcli con mod enp1s0 ipv4.addresses "192.168.122.50/24"
+nmcli con mod enp1s0 ipv4.gateway "192.168.122.1"
 nmcli con mod enp1s0 ipv4.method manual
 nmcli con mod enp1s0 ipv4.dns "8.8.8.8 4.4.4.4 1.1.1.1"
 
