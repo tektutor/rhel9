@@ -181,6 +181,12 @@ sudo virsh net-start mynetwork
 sudo virsh net-list
 ```
 
+Install virt-builder in RHEL 9 base machine
+```
+sudo subscription-manager repos --enable=rhel-9-for-x86_64-appstream-rpms
+sudo dnf install -y guestfs-tools
+```
+
 Create a fedora vm
 ```
 sudo virt-builder fedora-41  --format qcow2 \
