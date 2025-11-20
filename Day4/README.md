@@ -129,11 +129,13 @@ Login to vm1
 ```
 sudo su -
 hostnamectl set-hostname vm1
+hostname
 ```
 
 Login to vm2
 ```
 nmcli general hotname vm2
+hostname
 ```
 
 ## Lab - Login to vm1 and add a new network connection
