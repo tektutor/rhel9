@@ -66,6 +66,20 @@ nmcli con up enp1s0
 nmcli device show
 ```
 
+## Lab - Rename network interface name
+note
+<pre>
+- nmcli doesn't support renaming interface name, hence we need to use a different approach  
+- create a directory name network if it is missing under /etc/systemd
+- create a file name /etc/systemd/network/10-rename.link
+  [Match] 
+  MACAddress=52:54:00:61:82:a7 
+  [Link] Name=eth0
+- restart - systemctl restart systemd-udevd
+- restart machine - reboot
+</pre>
+
+
 ## Lab - Deleting KVM vm1 and vm2 and recreating it
 ```
 virsh destroy vm1
@@ -93,6 +107,7 @@ sudo virt-install   --name vm2   --ram 8192   --vcpus 2   --cpu host-model   --d
 ```
 
 You can then open remina and paste the 192.168.122.110:1 or whatever the installer shows in the terminal to proceed with gui mode of rhel9 installation
+
 
 
 ## Lab - Login to vm1 and add a new network connection
