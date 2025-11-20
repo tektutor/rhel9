@@ -13,6 +13,7 @@
 - the above is a range of IP Address
 - another subnet example 192.168.0.0/16
 - how many IP addresses are there in the above  ( 256 x 256 = 65535 IP addresses in the above subnet )
+- Starting IP 
 </pre>
 
 ## Lab - Manually modify the network configuration in vm1 ( assign static IP manually )
@@ -54,5 +55,5 @@ ifconfig
 nmcli con down enp1s0
 nmcli con up enp1s0
 
-ifconfig
+nmcli device show
 ```
