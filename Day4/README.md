@@ -124,6 +124,17 @@ sudo virt-install   --name vm2   --ram 8192   --vcpus 2   --cpu host-model   --d
 You can then open remina and paste the 192.168.122.110:1 or whatever the installer shows in the terminal to proceed with gui mode of rhel9 installation
 
 
+## Lab - Changing hostname of vm1 and vm2
+Login to vm1
+```
+sudo su -
+hostnamectl set-hostname vm1
+```
+
+Login to vm2
+```
+nmcli general hotname vm2
+```
 
 ## Lab - Login to vm1 and add a new network connection
 ```
