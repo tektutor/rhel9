@@ -17,6 +17,14 @@
 </pre>
 
 ## Lab - Manually modify the network configuration in vm1 ( assign static IP manually )
+From the RHEL9 base machine run the below
+```
+sudo su -
+virsh net-list --all
+virsh net-dumpxml default
+ls -l /etc/libvirt/qemu/networks
+```
+
 Ensure you have already logged in to your vm1 using virsh
 ```
 virsh console vm1
