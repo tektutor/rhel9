@@ -79,6 +79,21 @@ note
 - restart machine - reboot
 </pre>
 
+You may follow the below instructions
+```
+sudo su -
+cd /etc/systemd
+mkdir network
+touch 10-rename.link
+```
+
+Edit 10-rename.link with vim editor and add the belwo lines
+<pre>
+[Match] 
+MACAddress=52:54:00:61:82:a7 
+[Link] 
+Name=eth0
+</pre>
 
 ## Lab - Deleting KVM vm1 and vm2 and recreating it
 ```
