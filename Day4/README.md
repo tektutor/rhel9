@@ -87,7 +87,7 @@ mkdir network
 touch 10-rename.link
 ```
 
-Edit 10-rename.link with vim editor and add the belwo lines
+Edit 10-rename.link with vim editor and add the below lines
 <pre>
 [Match] 
 MACAddress=52:54:00:61:82:a7 
