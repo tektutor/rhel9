@@ -167,3 +167,49 @@ Create an network.xml file with below content
   </ip>
 </network> 
 ```
+
+Create your custom network
+```
+sudo virsh net-define --file network.xml
+sudo virsh net-autostart mynetwork
+sudo virsh net-start mynetwork
+sudo virsh net-list
+```
+
+Create a fedora vm
+```
+sudo virt-builder fedora-41  --format qcow2 \
+  --size 20G -o /var/lib/libvirt/images/ocp-bastion-server.qcow2 \
+  --root-password password:Root@123
+
+sudo virt-install \
+  --name ocp-bastion-server \
+  --ram 1024 \
+  --vcpus 1 \
+  --disk path=/var/lib/libvirt/images/ocp-bastion-server.qcow2 \
+  --os-variant rhel8.0 \
+  --network bridge=mynetwork \
+  --graphics none \
+  --serial pty \
+  --console pty \
+  --boot hd \
+  --import
+```
+
+Once you login to the fedora box, you need to configure network as shown below
+<pre>
+ip link show
+
+nmcli con add type ethernet con-name enp1s0 ifname enp1s0 \
+  connection.autoconnect yes ipv4.method manual \
+  ipv4.address 192.168.100.254/24 ipv4.gateway 192.168.100.1 \
+  ipv4.dns 8.8.8.8
+
+ping -c 2 8.8.8.8
+ping -c 2 google.com
+
+sudo dnf -y upgrade
+sudo dnf -y install git vim wget curl bash-completion tree tar libselinux-python3 firewalld ansible
+sudo reboot  
+</pre>
+
