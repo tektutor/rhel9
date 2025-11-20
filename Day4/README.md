@@ -95,3 +95,13 @@ sudo virt-install   --name vm2   --ram 8192   --vcpus 2   --cpu host-model   --d
 You can then open remina and paste the 192.168.122.110:1 or whatever the installer shows in the terminal to proceed with gui mode of rhel9 installation
 
 
+## Lab - Login to vm1 and add a new network connection
+```
+sudo su -
+nmcli con add type ethernet ifname eth0 con-name eth0 ipv4.method manual \
+ipv4.addresses 192.168.122.2/24 \
+ipv4.gateway 192.168.122.1 \
+ipv4.dns "8.8.8.8 4.4.4.4"
+
+ifconfig
+```
