@@ -95,6 +95,11 @@ MACAddress=52:54:00:61:82:a7
 Name=eth0
 </pre>
 
+Restart the udev service and reboot the machine
+```
+systemctl restart systemd-udevd
+reboot
+```
 ## Lab - Deleting KVM vm1 and vm2 and recreating it
 ```
 virsh destroy vm1
