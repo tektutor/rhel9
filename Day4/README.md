@@ -148,3 +148,22 @@ ipv4.dns "8.8.8.8 4.4.4.4"
 
 ifconfig
 ```
+
+
+## Let's create a vm1 using kvm
+
+Create an network.xml file with below content 
+```
+<network>
+  <name>mynetwork</name>
+  <forward mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+  </forward>
+  <bridge name='mynetwork' stp='on' delay='0'/>
+  <domain name='mynetwork'/>
+  <ip address='192.168.100.1' netmask='255.255.255.0'>
+  </ip>
+</network> 
+```
