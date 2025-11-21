@@ -66,12 +66,15 @@ sudo firewall-cmd --reload
 
 #In rhelvm1 terminal
 echo "Nginx works in rhelvm1" > /usr/share/nginx/html/index.html
+passwd hacluster
 
 #In rhelvm2 terminal
 echo "Nginx works in rhelvm2" > /usr/share/nginx/html/index.html
+passwd hacluster
 
 #In rhelvm3 terminal
 echo "Nginx works in rhelvm3" > /usr/share/nginx/html/index.html
+passwd hacluster
 
 pcs host auth rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org -u hacluster
 
