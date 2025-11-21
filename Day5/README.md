@@ -76,11 +76,22 @@ pcs cluster start --all
 pcs cluster enable --all
 pcs status
 
-pcs stonith create fence-rhelvm1 fence_virsh pcmk_host_list="rhelvm1.tektutor.org" ipaddr=192.168.122.214 login=root passwd='RedHatRootPassword'
-pcs stonith create fence-rhelvm2 fence_virsh pcmk_host_list="rhelvm2.tektutor.org" ipaddr=192.168.122.174 login=root passwd='RedHatRootPassword'
-pcs stonith create fence-rhelvm3 fence_virsh pcmk_host_list="rhelvm3.tektutor.org" ipaddr=192.168.122.180 login=root passwd='RedHatRootPassword'
+#For lab purpose
+pcs property set stonith-enabled=false
+pcs property set no-quorum-policy=ignore
+
+pcs stonith create fence-rhelvm1 fence_ipmilan pcmk_host_list="rhelvm1.tektutor.org" ipaddr=<BMC_IP> login=<BMC_USER> passwd=<BMC_PASS>
+pcs stonith create fence-rhelvm2 fence_ipmilan pcmk_host_list="rhelvm2.tektutor.org" ipaddr=<BMC_IP> login=<BMC_USER> passwd=<BMC_PASS>
+pcs stonith create fence-rhelvm3 fence_ipmilan pcmk_host_list="rhelvm3.tektutor.org" ipaddr=<BMC_IP> login=<BMC_USER> passwd=<BMC_PASS>
 pcs property set stonith-enabled=true
 pcs property set no-quorum-policy=freeze
+
+#Production-grade
+#pcs stonith create fence-rhelvm1 fence_virsh pcmk_host_list="rhelvm1.tektutor.org" ipaddr=192.168.122.214 login=root passwd='RedHatRootPassword'
+#pcs stonith create fence-rhelvm2 fence_virsh pcmk_host_list="rhelvm2.tektutor.org" ipaddr=192.168.122.174 login=root passwd='RedHatRootPassword'
+#pcs stonith create fence-rhelvm3 fence_virsh pcmk_host_list="rhelvm3.tektutor.org" ipaddr=192.168.122.180 login=root passwd='RedHatRootPassword'
+#pcs property set stonith-enabled=true
+#pcs property set no-quorum-policy=freeze
 
 # Add floating IP
 pcs resource create vip ocf:heartbeat:IPaddr2 ip=192.168.122.250 cidr_netmask=24 op monitor interval=30s
