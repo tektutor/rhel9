@@ -92,6 +92,9 @@ pcs resource group add web-group vip nginx
 pcs status
 
 # Step 4: Test failover
+pcs resource disable web-group
+pcs resource enable web-group
+pcs status
 curl http://192.168.122.250
 
 
