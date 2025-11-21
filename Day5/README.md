@@ -38,7 +38,7 @@ rhelvm2 192.168.122.174
 rhelvm3 192.168.122.127
 </pre>
 
-We need to add the above IPs in all vms in the /etc/hosts file as shown below
+We need to add the above IPs in all vm's /etc/hosts file as shown below
 <pre>
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
