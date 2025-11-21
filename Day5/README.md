@@ -225,6 +225,16 @@ cat /proc/net/bonding/bond0
 
 ## Lab - Bind DNS Setup and configuration
 
+Note
+<pre>
+- In case, you already have some vms, delete it from the lab machine
+- For example
+  virsh destroy vm1
+  virsh destroy vm2
+  virsh undefine vm1 --remove-all-storage
+  virsh undefine vm2 --remove-all-storage
+</pre>
+
 Let's create two VMs using kvm named vm1 and vm2.
 
 Let's start with creating disks for vm1 and vm2
