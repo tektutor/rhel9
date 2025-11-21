@@ -71,9 +71,7 @@ pcs host auth rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org -u 
 #sudo systemctl stop corosync
 
 
-pcs cluster setup \
-  --cluster-name mycluster \
-  rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org
+pcs cluster setup rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org
 
 pcs cluster start --all
 pcs cluster enable --all
