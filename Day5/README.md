@@ -49,6 +49,7 @@ We need to add the above IPs in all vm's /etc/hosts file as shown below
 192.168.122.174 rhelvm2.tektutor.org rhelvm2
 192.168.122.180 rhelvm3.tektutor.org rhelvm3  
 </pre>
+<img width="1960" height="624" alt="image" src="https://github.com/user-attachments/assets/7e1914c1-134d-44f2-b728-17b73cd3ed06" />
 
 Install the below tools on all 3 vms(servers)
 ```
