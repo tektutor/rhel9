@@ -64,6 +64,15 @@ sudo firewall-cmd --permanent --add-service=high-availability
 sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --reload
 
+#In rhelvm1 terminal
+echo "Nginx works in rhelvm1" > /usr/share/nginx/html/index.html
+
+#In rhelvm2 terminal
+echo "Nginx works in rhelvm2" > /usr/share/nginx/html/index.html
+
+#In rhelvm3 terminal
+echo "Nginx works in rhelvm3" > /usr/share/nginx/html/index.html
+
 pcs host auth rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org -u hacluster
 
 #sudo pcs cluster stop --all
@@ -90,6 +99,7 @@ pcs resource group add web-group vip nginx
 
 # Step 3: Check cluster status
 pcs status
+curl http://192.168.122.250
 
 # Step 4: Test failover
 pcs cluster stop rhelvm1.tektutor.org
@@ -127,8 +137,5 @@ pcs stonith show
 pcs resource disable web-group
 pcs status
 curl http://192.168.122.250
-
-# Reenable the resource
-pcs resource enable web-group
 
 ```
