@@ -92,11 +92,13 @@ pcs resource group add web-group vip nginx
 pcs status
 
 # Step 4: Test failover
-pcs resource disable web-group
-pcs resource enable web-group
+pcs cluster stop rhelvm1.tektutor.org
+
 pcs status
 curl http://192.168.122.250
-
+pcs cluster start rhelvm1.tektutor.org
+pcs status
+curl http://192.168.122.250
 
 #Production-grade
 #pcs stonith create fence-rhelvm1 fence_virsh pcmk_host_list="rhelvm1.tektutor.org" ipaddr=192.168.122.214 login=root passwd='RedHatRootPassword'
