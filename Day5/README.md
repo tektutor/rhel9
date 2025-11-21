@@ -66,7 +66,10 @@ sudo firewall-cmd --reload
 
 pcs host auth rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org -u hacluster
 
-pcs cluster setup --name mycluster rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org
+pcs cluster setup \
+  --cluster-name mycluster \
+  rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org
+
 pcs cluster start --all
 pcs cluster enable --all
 pcs status
