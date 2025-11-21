@@ -63,6 +63,7 @@ sudo systemctl enable --now nginx
 sudo firewall-cmd --permanent --add-service=high-availability
 sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --reload
+```
 
 #In rhelvm1 terminal
 echo "Nginx works in rhelvm1" > /usr/share/nginx/html/index.html
