@@ -275,3 +275,18 @@ options {
         directory       "/var/named";
 };  
 </pre>
+
+At the end of the file add your zone in the /etc/named.conf file
+<pre>
+zone "palmeto.org" IN {
+  type master;
+  file "palmeto.org.zone";
+}
+zone "122.168.192.in-addr.arpa" IN {
+  type master;
+  file "122.168.192.rev";
+}
+
+
+  
+</pre>
