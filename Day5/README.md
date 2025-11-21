@@ -116,26 +116,3 @@ curl http://192.168.122.250
 #pcs stonith create fence-rhelvm3 fence_virsh pcmk_host_list="rhelvm3.tektutor.org" ipaddr=192.168.122.180 login=root passwd='RedHatRootPassword'
 #pcs property set stonith-enabled=true
 #pcs property set no-quorum-policy=freeze
-
-# Add floating IP
-pcs resource create vip ocf:heartbeat:IPaddr2 ip=192.168.122.250 cidr_netmask=24 op monitor interval=30s
-
-# Add Nginx service
-pcs resource create nginx systemd:nginx op monitor interval=30s
-
-# Group VIP + Nginx
-pcs resource group add web-group vip nginx
-
-# Optional: Resource stickiness
-pcs resource meta web-group resource-stickiness=100 migration-threshold=3
-
-pcs status
-pcs property list
-pcs stonith show
-
-# Test failover
-pcs resource disable web-group
-pcs status
-curl http://192.168.122.250
-
-```
