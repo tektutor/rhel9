@@ -233,4 +233,15 @@ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/vm1.qcow2 20G
 sudo qemu-img create -f qcow2 /var/lib/libvirt/images/vm2.qcow2 20G
 ```
 
+Let's create the vm1 using kvm
+```
+sudo virt-install   --name vm1   --ram 8192   --vcpus 2   --cpu host-model   --disk path=/var/lib/libvirt/images/rhel1.qcow2,format=qcow2
+--location /var/lib/libvirt/images/rhel-9.0-x86_64-dvd.iso   --os-variant rhel9.0   --graphics none   --extra-args "console=ttyS0,115200n8"
+```
+
+Let's create the vm2 using kvm
+```
+sudo virt-install   --name vm2   --ram 8192   --vcpus 2   --cpu host-model   --disk path=/var/lib/libvirt/images/rhel2.qcow2,format=qcow2
+--location /var/lib/libvirt/images/rhel-9.0-x86_64-dvd.iso   --os-variant rhel9.0   --graphics none   --extra-args "console=ttyS0,115200n8"
+```
 
