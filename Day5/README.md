@@ -30,6 +30,8 @@ on rhelvm3
 hostnamectl set-hostname rhelvm3.tektutor.org
 hostname
 ```
+<img width="1960" height="624" alt="image" src="https://github.com/user-attachments/assets/e5fb4c8c-1d4a-40bc-b2a6-0a6c48595bdf" />
+
 
 Note down the IP addresses of all 3 vms, in my case it looks as shown below
 <pre>
