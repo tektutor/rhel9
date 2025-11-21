@@ -156,81 +156,72 @@ Notes
   - Inside the VM, we need to have two virtual NICs (connected to br0 and br1).
   - We need to configure a bond in the VM (e.g., bond0) so that the VM itself sees two NICs as one logical interface
 - This allows redundancy or aggregated bandwidth inside the VM
+- Create a VM using VMM GUI with 2GB RAM, Dual Core and 20GB Disk
+- Shutdown the VM
 </pre>
 
-We need to install the below on the main RHEL machine ( palmeto )
+Add two virtual NICs
 ```
-sudo dnf install -y bridge-utils
-sudo nmcli connection add type bridge con-name br0 ifname br0
-sudo nmcli connection add type bridge con-name br1 ifname br1
-
-sudo nmcli connection add type bridge-slave \
-   con-name br0-slave1 \
-   ifname enp1s0 \
-   master br0
-
-sudo nmcli connection add type bridge-slave \
-   con-name br1-slave1 \
-   ifname enp2s0 \
-   master br1
-
-sudo nmcli connection add type bridge-slave con-name br0-slave1 ifname enp1s0 master br0
-sudo nmcli connection add type bridge-slave con-name br1-slave1 ifname enp2s0 master br1
-
-sudo nmcli connection up br0
-sudo nmcli connection up br1
-sudo nmcli connection up br0-slave1
-sudo nmcli connection up br1-slave1
-
-ip addr show br0
-ip addr show br1
+virsh attach-interface rhelvm --type network --source default --model virtio --config
+virsh attach-interface rhelvm --type network --source default --model virtio --config
 ```
 
-Create a disk for the VM
+Start the VM
 ```
-qemu-img create -f qcow2 /var/lib/libvirt/images/vm-bond.qcow2 20G
-```
-
-Create the vm
-```
-sudo virt-install \
-  --name vm-bond \
-  --memory 4096 \
-  --vcpus 2 \
-  --disk path=/var/lib/libvirt/images/vm-bond.qcow2,size=20 \
-  --os-variant rhel9.0 \
-  --network bridge=br0,model=virtio \
-  --network bridge=br1,model=virtio \
-  --graphics none \
-  --console pty,target_type=serial \
-  --cdrom /var/lib/libvirt/images/RHEL.iso
+virsh start rhelvm
 ```
 
-Inside the vm terminal, let's create the bonding
+Inside the VM, run this, you are supposed to see two NICs
+```
+nmcli device status
+```
+
+Install bonding tools inside VM
+```
+sudo dnf install -y iputils iproute bridge-utils
+```
+
+Enable bonding kernel module
+```
+echo "bonding" | sudo tee /etc/modules-load.d/bonding.conf
+sudo modprobe bonding
+lsmod | grep bonding
+```
+
+Create a bond
 ```
 sudo nmcli connection add type bond con-name bond0 ifname bond0 mode active-backup
-sudo nmcli connection add type ethernet con-name bond0-slave1 ifname ens3 master bond0
-sudo nmcli connection add type ethernet con-name bond0-slave2 ifname ens4 master bond0
-sudo nmcli connection up bond0
+```
 
+Add NICs as slaves
+```
+sudo nmcli connection add type bond-slave con-name bond0-slave1 ifname enp1s0 master bond0
+sudo nmcli connection add type bond-slave con-name bond0-slave2 ifname enp2s0 master bond0
+```
 
-sudo nmcli connection up bond0-slave1
-sudo nmcli connection up bond0-slave2
+Assign IP address to bond0
+```
+sudo nmcli con mod bond0 ipv4.addresses "192.168.122.50/24"
+sudo nmcli con mod bond0 ipv4.gateway "192.168.122.1"
+sudo nmcli con mod bond0 ipv4.dns "8.8.8.8"
+sudo nmcli con mod bond0 ipv4.method manual
+```
 
+Bring up the bond and slaves
+```
+sudo nmcli con up bond0
+sudo nmcli con up bond0-slave1
+sudo nmcli con up bond0-slave2
 cat /proc/net/bonding/bond0
+#Observe enp1s0 is active now
+ip addr show bond0
+
+# Test failover
+sudo nmcli device disconnect enp1s0
+sudo ip link set enp1s0 down
+# Observe enp2s0 will be active now, the bond has failed over to the other NIC
+cat /proc/net/bonding/bond0
+
 ```
 
-Assign IP to the bonding statically
-```
-sudo nmcli connection modify bond0 ipv4.addresses 192.168.1.50/24
-sudo nmcli connection modify bond0 ipv4.gateway 192.168.1.1
-sudo nmcli connection modify bond0 ipv4.dns 8.8.8.8
-sudo nmcli connection modify bond0 ipv4.method manual
-sudo nmcli connection up bond0
-```
 
-Or assign IP to the bonding dynamically
-```
-sudo nmcli connection modify bond0 ipv4.method auto
-sudo nmcli connection up bond0
-```
