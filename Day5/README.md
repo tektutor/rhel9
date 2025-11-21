@@ -77,14 +77,11 @@ pcs cluster enable --all
 pcs status
 
 #For lab purpose
+pcs stonith create fence-rhelvm1 fence_dummy pcmk_host_list="rhelvm1.tektutor.org"
+pcs stonith create fence-rhelvm2 fence_dummy pcmk_host_list="rhelvm2.tektutor.org"
+pcs stonith create fence-rhelvm3 fence_dummy pcmk_host_list="rhelvm3.tektutor.org"
 pcs property set stonith-enabled=false
 pcs property set no-quorum-policy=ignore
-
-pcs stonith create fence-rhelvm1 fence_ipmilan pcmk_host_list="rhelvm1.tektutor.org" ipaddr=<BMC_IP> login=<BMC_USER> passwd=<BMC_PASS>
-pcs stonith create fence-rhelvm2 fence_ipmilan pcmk_host_list="rhelvm2.tektutor.org" ipaddr=<BMC_IP> login=<BMC_USER> passwd=<BMC_PASS>
-pcs stonith create fence-rhelvm3 fence_ipmilan pcmk_host_list="rhelvm3.tektutor.org" ipaddr=<BMC_IP> login=<BMC_USER> passwd=<BMC_PASS>
-pcs property set stonith-enabled=true
-pcs property set no-quorum-policy=freeze
 
 #Production-grade
 #pcs stonith create fence-rhelvm1 fence_virsh pcmk_host_list="rhelvm1.tektutor.org" ipaddr=192.168.122.214 login=root passwd='RedHatRootPassword'
