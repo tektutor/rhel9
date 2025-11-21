@@ -302,5 +302,24 @@ $TTL 1D
         1D )
 @       IN  NS     ns1.palmeto.org.
 ns1     IN  A      192.168.122.10 ;
-vm1     IN  A      192.168.122.
+vm1     IN  A      192.168.122.98 ;
 </pre>
+
+Let's create a Reverse Zone file
+```
+sudo vim /var/named/112.168.192.rev
+<pre>
+$TTL  1D
+@     IN  SOA ns1.palmeto.org. admin.palmeto.org. (
+              2025112101 ;
+              1H
+              15H
+              1W
+              1D )
+@             IN  NS     ns1.palmeto.org.
+10            IN  PTR    ns1.palmeto.org.
+100           IN  PTR    vm1.palmeto.org.
+101           IN  PTR    vm2.palmeto.org.
+</pre>
+
+```
