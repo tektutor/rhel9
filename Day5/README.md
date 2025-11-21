@@ -285,8 +285,22 @@ zone "palmeto.org" IN {
 zone "122.168.192.in-addr.arpa" IN {
   type master;
   file "122.168.192.rev";
-}
+}  
+</pre>
 
-
-  
+Let's create forward zone file
+```
+sudo vim /var/named/palmeto.org.zone
+```
+<pre>
+$TTL 1D
+@    IN SOA ns1.palmeto.org. admin.palmeto.org. (
+        2025112101 ; serial
+        1H         ; refresh
+        15M        ; retry
+        1W         ; expire
+        1D )
+@       IN  NS     ns1.palmeto.org.
+ns1     IN  A      192.168.122.10 ;
+vm1     IN  A      192.168.122.
 </pre>
