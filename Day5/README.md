@@ -2,7 +2,14 @@
 
 ## Lab - Let's create a 3 node Pacemaker cluster
 
-I have created 3 RHEL 9 VMs namely rhelvm1, rhelvm2 and rhelvm3.
+Create 3 RHEL 9 VMs namely rhelvm1, rhelvm2 and rhelvm3.
+Note
+<pre>
+- use Virtual Machine Manager (GUI) tool to create the VMs
+- Allocate 2048 GB RAM, CPU - 1 core and  Storage - 20GB.
+- I gave root/root as the login credentials for simplicity
+- I clone the first VM (rhelvm1) to created rhelvm2 and rhelvm3.
+</pre>
 
 Make sure their hostnames are configured as shown below
 
