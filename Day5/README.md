@@ -322,4 +322,20 @@ $TTL  1D
 101           IN  PTR    vm2.palmeto.org.
 </pre>
 
+We need to update the file ownership
+```
+sudo chown root:named /var/named/palmeto.org.zone
+sudo chown root:named /var/named/112.168.192.rev
+sudo chmod 640 /var/named/*.zone
+```
+
+Let's start the service
+```
+sudo systemctl enable --now named
+sudo systemctl status named
+```
+
+Test DNS from Host
+```
+dig @localhost vm1.palmeto.org
 ```
