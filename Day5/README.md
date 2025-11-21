@@ -263,3 +263,15 @@ dnf install -y bind bind-utils
 firewall-cmd --add-service=dns --permanent
 firewall-cmd --reload
 ```
+
+Edit the /etc/named.conf and replace the options block as shown below
+<pre>
+options {
+        listen-on port 53 { any; };
+        listen-on-v6 { any; };
+        allow-query     { any; };
+        recursion yes;
+        dnssec-validation no;
+        directory       "/var/named";
+};  
+</pre>
