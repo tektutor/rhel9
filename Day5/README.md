@@ -50,6 +50,14 @@ We need to add the above IPs in all vm's /etc/hosts file as shown below
 192.168.122.180 rhelvm3.tektutor.org rhelvm3  
 </pre>
 
+To split the window, you may use tmux utility on the command line
+<pre>
+- you need to type tmux in the terminal, a green bar will appears which is an indication that tmux is in action
+- you can split the window horizontally using the Ctrl+B "
+- you can split the window vertically using Ctrl+B %
+- you can move between windows using Ctrl+B Up, Down, Left and Right arrows
+- to synchronize all the windows, within tmux Ctrl+B :setw synchronize-panes on to switch Ctrl+B :setw synchronize-panes off
+</pre>
 <img width="1960" height="624" alt="image" src="https://github.com/user-attachments/assets/7e1914c1-134d-44f2-b728-17b73cd3ed06" />
 
 Install the below tools on all 3 vms(servers)
