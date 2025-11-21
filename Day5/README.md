@@ -52,7 +52,8 @@ We need to add the above IPs in all vm's /etc/hosts file as shown below
 
 To split the window, you may use tmux utility on the command line
 <pre>
-- you need to type tmux in the terminal, a green bar will appears which is an indication that tmux is in action
+- you can install tmux with command sudo dnf install -y tmux
+- you need to type tmux in the terminal, a green bar will appear which is an indication that tmux is in action
 - you can split the window horizontally using the Ctrl+B "
 - you can split the window vertically using Ctrl+B %
 - you can move between windows using Ctrl+B Up, Down, Left and Right arrows
