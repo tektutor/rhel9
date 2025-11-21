@@ -260,6 +260,6 @@ Login to vm1
 sudo su -
 subscription-manager register --auto-attach
 dnf install -y bind bind-utils
-firewalld-cmd --add-service=dns --permanent
-firewalld-cmd --reload
+firewall-cmd --add-service=dns --permanent
+firewall-cmd --reload
 ```
