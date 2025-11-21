@@ -64,29 +64,41 @@ sudo firewall-cmd --permanent --add-service=high-availability
 sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --reload
 
-sudo chsh -s /bin/bash hacluster
-getent passwd hacluster
+pcs host auth rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org -u hacluster
 
-
-sudo pcs host auth rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org -u hacluster
-
-pcs cluster setup --name mycluster rhelvm1 rhelvm2 rhelvm3
+pcs cluster setup --name mycluster rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org
 pcs cluster start --all
 pcs cluster enable --all
-pcs resource create vip ocf:heartbeat:IPaddr2 ip=192.168.122.250 cidr_netmask=24 op monitor interval=30s
-pcs resource create nginx systemd:nginx op monitor interval=30s
-pcs resource group add web-group vip nginx
 pcs status
+
+pcs stonith create fence-rhelvm1 fence_virsh pcmk_host_list="rhelvm1.tektutor.org" ipaddr=192.168.122.214 login=root passwd='RedHatRootPassword'
+pcs stonith create fence-rhelvm2 fence_virsh pcmk_host_list="rhelvm2.tektutor.org" ipaddr=192.168.122.174 login=root passwd='RedHatRootPassword'
+pcs stonith create fence-rhelvm3 fence_virsh pcmk_host_list="rhelvm3.tektutor.org" ipaddr=192.168.122.180 login=root passwd='RedHatRootPassword'
+pcs property set stonith-enabled=true
+pcs property set no-quorum-policy=freeze
+
+# Add floating IP
+pcs resource create vip ocf:heartbeat:IPaddr2 ip=192.168.122.250 cidr_netmask=24 op monitor interval=30s
+
+# Add Nginx service
+pcs resource create nginx systemd:nginx op monitor interval=30s
+
+# Group VIP + Nginx
+pcs resource group add web-group vip nginx
+
+# Optional: Resource stickiness
+pcs resource meta web-group resource-stickiness=100 migration-threshold=3
+
+pcs status
+pcs property list
+pcs stonith show
 
 # Test failover
 pcs resource disable web-group
 pcs status
-pcs resource enable web-group
-pcs status
-pcs resource meta web-group resource-stickiness=100
-pcs resource meta web-group migration-threshold=3
-pcs property list
-pcs stonith show
 curl http://192.168.122.250
+
+# Reenable the resource
+pcs resource enable web-group
 
 ```
