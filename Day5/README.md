@@ -2,7 +2,7 @@
 
 ## Lab - Let's create a 3 node Pacemaker cluster
 
-I have create 3 RHEL 9 VMs namely rhelvm1, rhelvm2 and rhelvm3.
+I have created 3 RHEL 9 VMs namely rhelvm1, rhelvm2 and rhelvm3.
 
 Make sure their hostnames are configured as shown below
 
