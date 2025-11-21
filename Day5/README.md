@@ -255,3 +255,11 @@ sudo virt-install   --name vm2   --ram 8192   --vcpus 2   --cpu host-model   --d
 --location /var/lib/libvirt/images/rhel-9.0-x86_64-dvd.iso   --os-variant rhel9.0   --graphics none   --extra-args "console=ttyS0,115200n8"
 ```
 
+Login to vm1
+```
+sudo su -
+subscription-manager register --auto-attach
+dnf install -y bind bind-utils
+firewalld-cmd --add-service=dns --permanent
+firewalld-cmd --reload
+```
