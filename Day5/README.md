@@ -221,7 +221,16 @@ sudo nmcli device disconnect enp1s0
 sudo ip link set enp1s0 down
 # Observe enp2s0 will be active now, the bond has failed over to the other NIC
 cat /proc/net/bonding/bond0
+```
 
+## Lab - Bind DNS Setup and configuration
+
+Let's create two VMs using kvm named vm1 and vm2.
+
+Let's start with creating disks for vm1 and vm2
+```
+sudo qemu-img create -f qcow2 /var/lib/libvirt/images/vm1.qcow2 20G
+sudo qemu-img create -f qcow2 /var/lib/libvirt/images/vm2.qcow2 20G
 ```
 
 
