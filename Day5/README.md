@@ -116,3 +116,80 @@ curl http://192.168.122.250
 #pcs stonith create fence-rhelvm3 fence_virsh pcmk_host_list="rhelvm3.tektutor.org" ipaddr=192.168.122.180 login=root passwd='RedHatRootPassword'
 #pcs property set stonith-enabled=true
 #pcs property set no-quorum-policy=freeze
+
+
+## Lab - Network bonding on a VM with two network interfaces for load-balancing(HA internet)
+
+Notes
+<pre>
+- On the host, we need to create Linux bridges (br0, br1) to forward traffic from physical NICs to virtual NICs
+- These bridges act like a virtual switch for the VM
+- VM bonding
+  - Inside the VM, we need to have two virtual NICs (connected to br0 and br1).
+  - We need to configure a bond in the VM (e.g., bond0) so that the VM itself sees two NICs as one logical interface
+- This allows redundancy or aggregated bandwidth inside the VM
+</pre>
+
+We need to install the below on the main RHEL machine ( palmeto )
+```
+sudo dnf install -y bridge-utils
+sudo nmcli connection add type bridge con-name br0 ifname br0
+sudo nmcli connection add type bridge con-name br1 ifname br1
+sudo nmcli connection add type bridge-slave con-name br0-slave1 ifname enp1s0 master br0
+sudo nmcli connection add type bridge-slave con-name br1-slave1 ifname enp2s0 master br1
+
+sudo nmcli connection up br0
+sudo nmcli connection up br1
+sudo nmcli connection up br0-slave1
+sudo nmcli connection up br1-slave1
+
+ip addr show br0
+ip addr show br1
+```
+
+Create a disk for the VM
+```
+qemu-img create -f qcow2 /var/lib/libvirt/images/vm-bond.qcow2 20G
+```
+
+Create the vm
+```
+sudo virt-install \
+  --name vm-bond \
+  --memory 4096 \
+  --vcpus 2 \
+  --disk path=/var/lib/libvirt/images/vm-bond.qcow2,size=20 \
+  --os-variant rhel9.0 \
+  --network bridge=br0,model=virtio \
+  --network bridge=br1,model=virtio \
+  --graphics none \
+  --console pty,target_type=serial \
+  --cdrom /var/lib/libvirt/images/RHEL.iso
+```
+
+Inside the vm terminal, let's create the bonding
+```
+sudo nmcli connection add type bond con-name bond0 ifname bond0 mode active-backup
+sudo nmcli connection add type ethernet con-name bond0-slave1 ifname ens3 master bond0
+sudo nmcli connection add type ethernet con-name bond0-slave2 ifname ens4 master bond0
+sudo nmcli connection up bond0
+sudo nmcli connection up bond0-slave1
+sudo nmcli connection up bond0-slave2
+
+cat /proc/net/bonding/bond0
+```
+
+Assign IP to the bonding statically
+```
+sudo nmcli connection modify bond0 ipv4.addresses 192.168.1.50/24
+sudo nmcli connection modify bond0 ipv4.gateway 192.168.1.1
+sudo nmcli connection modify bond0 ipv4.dns 8.8.8.8
+sudo nmcli connection modify bond0 ipv4.method manual
+sudo nmcli connection up bond0
+```
+
+Or assign IP to the bonding dynamically
+```
+sudo nmcli connection modify bond0 ipv4.method auto
+sudo nmcli connection up bond0
+```
