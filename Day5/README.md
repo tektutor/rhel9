@@ -49,6 +49,7 @@ We need to add the above IPs in all vm's /etc/hosts file as shown below
 192.168.122.174 rhelvm2.tektutor.org rhelvm2
 192.168.122.180 rhelvm3.tektutor.org rhelvm3  
 </pre>
+
 <img width="1960" height="624" alt="image" src="https://github.com/user-attachments/assets/7e1914c1-134d-44f2-b728-17b73cd3ed06" />
 
 Install the below tools on all 3 vms(servers)
@@ -69,11 +70,14 @@ sudo firewall-cmd --reload
 echo "Nginx works in rhelvm1" > /usr/share/nginx/html/index.html
 passwd hacluster
 
-#In rhelvm2 terminal
+### In rhelvm2 terminal
+```
 echo "Nginx works in rhelvm2" > /usr/share/nginx/html/index.html
 passwd hacluster
+```
 
-#In rhelvm3 terminal
+### In rhelvm3 terminal
+```
 echo "Nginx works in rhelvm3" > /usr/share/nginx/html/index.html
 passwd hacluster
 
@@ -88,24 +92,34 @@ pcs cluster setup --force mycluster rhelvm1.tektutor.org rhelvm2.tektutor.org rh
 pcs cluster start --all
 pcs cluster enable --all
 pcs status
+```
 
-#For lab purpose
+### For learning purpose
+```
 pcs property set stonith-enabled=false
 pcs property set no-quorum-policy=ignore
-# Step 1: Disable STONITH and quorum rules
+```
+### Step 1: Disable STONITH and quorum rules
+```
 pcs property set stonith-enabled=false
 pcs property set no-quorum-policy=ignore
+```
 
-# Step 2: Create VIP and Nginx resources
+### Step 2: Create VIP and Nginx resources
+```
 pcs resource create vip ocf:heartbeat:IPaddr2 ip=192.168.122.250 cidr_netmask=24 op monitor interval=30s
 pcs resource create nginx systemd:nginx op monitor interval=30s
 pcs resource group add web-group vip nginx
+```
 
-# Step 3: Check cluster status
+### Step 3: Check cluster status
+```
 pcs status
 curl http://192.168.122.250
+```
 
-# Step 4: Test failover
+### Step 4: Test failover
+```
 pcs cluster stop rhelvm1.tektutor.org
 
 pcs status
@@ -113,14 +127,15 @@ curl http://192.168.122.250
 pcs cluster start rhelvm1.tektutor.org
 pcs status
 curl http://192.168.122.250
-
-#Production-grade
+```
+### Production-grade
+```
 #pcs stonith create fence-rhelvm1 fence_virsh pcmk_host_list="rhelvm1.tektutor.org" ipaddr=192.168.122.214 login=root passwd='RedHatRootPassword'
 #pcs stonith create fence-rhelvm2 fence_virsh pcmk_host_list="rhelvm2.tektutor.org" ipaddr=192.168.122.174 login=root passwd='RedHatRootPassword'
 #pcs stonith create fence-rhelvm3 fence_virsh pcmk_host_list="rhelvm3.tektutor.org" ipaddr=192.168.122.180 login=root passwd='RedHatRootPassword'
 #pcs property set stonith-enabled=true
 #pcs property set no-quorum-policy=freeze
-
+```
 
 ## Lab - Network bonding on a VM with two network interfaces for load-balancing(HA internet)
 
