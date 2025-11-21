@@ -325,8 +325,10 @@ $TTL  1D
 We need to update the file ownership
 ```
 sudo chown root:named /var/named/palmeto.org.zone
-sudo chown root:named /var/named/112.168.192.rev
+sudo chown root:named /var/named/122.168.192.rev
 sudo chmod 640 /var/named/*.zone
+cp /var/named/palmeto.org.zone /etc/named
+cp /var/named/122.168.192.rev /etc/named
 ```
 
 Let's start the service
