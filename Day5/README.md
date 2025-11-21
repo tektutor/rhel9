@@ -66,6 +66,11 @@ sudo firewall-cmd --reload
 
 pcs host auth rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org -u hacluster
 
+#sudo pcs cluster stop --all
+#sudo systemctl stop pacemaker
+#sudo systemctl stop corosync
+
+
 pcs cluster setup \
   --cluster-name mycluster \
   rhelvm1.tektutor.org rhelvm2.tektutor.org rhelvm3.tektutor.org
