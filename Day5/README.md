@@ -163,6 +163,17 @@ We need to install the below on the main RHEL machine ( palmeto )
 sudo dnf install -y bridge-utils
 sudo nmcli connection add type bridge con-name br0 ifname br0
 sudo nmcli connection add type bridge con-name br1 ifname br1
+
+sudo nmcli connection add type bridge-slave \
+   con-name br0-slave1 \
+   ifname enp1s0 \
+   master br0
+
+sudo nmcli connection add type bridge-slave \
+   con-name br1-slave1 \
+   ifname enp2s0 \
+   master br1
+
 sudo nmcli connection add type bridge-slave con-name br0-slave1 ifname enp1s0 master br0
 sudo nmcli connection add type bridge-slave con-name br1-slave1 ifname enp2s0 master br1
 
@@ -201,6 +212,8 @@ sudo nmcli connection add type bond con-name bond0 ifname bond0 mode active-back
 sudo nmcli connection add type ethernet con-name bond0-slave1 ifname ens3 master bond0
 sudo nmcli connection add type ethernet con-name bond0-slave2 ifname ens4 master bond0
 sudo nmcli connection up bond0
+
+
 sudo nmcli connection up bond0-slave1
 sudo nmcli connection up bond0-slave2
 
