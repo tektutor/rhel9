@@ -77,11 +77,23 @@ pcs cluster enable --all
 pcs status
 
 #For lab purpose
-pcs stonith create fence-rhelvm1 fence_dummy pcmk_host_list="rhelvm1.tektutor.org"
-pcs stonith create fence-rhelvm2 fence_dummy pcmk_host_list="rhelvm2.tektutor.org"
-pcs stonith create fence-rhelvm3 fence_dummy pcmk_host_list="rhelvm3.tektutor.org"
 pcs property set stonith-enabled=false
 pcs property set no-quorum-policy=ignore
+# Step 1: Disable STONITH and quorum rules
+pcs property set stonith-enabled=false
+pcs property set no-quorum-policy=ignore
+
+# Step 2: Create VIP and Nginx resources
+pcs resource create vip ocf:heartbeat:IPaddr2 ip=192.168.122.250 cidr_netmask=24 op monitor interval=30s
+pcs resource create nginx systemd:nginx op monitor interval=30s
+pcs resource group add web-group vip nginx
+
+# Step 3: Check cluster status
+pcs status
+
+# Step 4: Test failover
+curl http://192.168.122.250
+
 
 #Production-grade
 #pcs stonith create fence-rhelvm1 fence_virsh pcmk_host_list="rhelvm1.tektutor.org" ipaddr=192.168.122.214 login=root passwd='RedHatRootPassword'
