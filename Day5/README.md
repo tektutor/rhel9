@@ -339,3 +339,8 @@ Test DNS from Host
 ```
 dig @localhost vm1.palmeto.org
 ```
+
+Reverse lookup
+<pre>
+dig @localhost -x 192.168.112.98
+</pre>
