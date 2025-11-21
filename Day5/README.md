@@ -1,6 +1,6 @@
 # Day 5
 
-## Lab - Let's create a 3 node Pacemaker cluster
+## Lab - Let's create a 3 node production-grade Pacemaker cluster
 
 Create 3 RHEL 9 VMs namely rhelvm1, rhelvm2 and rhelvm3.
 Note
